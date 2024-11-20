@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-banner',
@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
   templateUrl: './banner.component.html',
   styleUrl: './banner.component.scss',
 })
-export class BannerComponent {}
+export class BannerComponent {
+  @Input() src = '';
+  @Input() alt = '';
+}
