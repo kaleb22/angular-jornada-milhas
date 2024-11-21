@@ -1,0 +1,57 @@
+<app-card variant="secondary">
+  <form>
+    <div class="form-container">
+      <mat-button-toggle-group aria-label="Tipo de passagem">
+        <mat-button-toggle>IDA E VOLTA</mat-button-toggle>
+        <mat-button-toggle>SOMENTE IDA</mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <mat-chip-listbox aria-label="Seleção de passagens">
+        <mat-chip-option>1 adulto</mat-chip-option>
+        <mat-chip-option>econômica</mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+
+    <div class="form-container">
+      <mat-form-field class="form-container__input" appearance="outline">
+        <mat-icon matPrefix>flight_takeoff</mat-icon>
+        <mat-label>Origem</mat-label>
+        <input matInput placeholder="Origem" />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+
+      <button mat-icon-button aria-label="Inverter origem e destino">
+        <mat-icon>sync_alt</mat-icon>
+      </button>
+
+      <mat-form-field class="form-container__input" appearance="outline">
+        <mat-icon matPrefix>flight_land</mat-icon>
+        <mat-label>Destino</mat-label>
+        <input matInput placeholder="Destino" />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="form-container__input" appearance="outline">
+        <mat-label>Data de ida</mat-label>
+        <input matInput [matDatepicker]="ida" />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="ida"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #ida></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="form-container__input" appearance="outline">
+        <mat-label>Data de volta</mat-label>
+        <input matInput [matDatepicker]="volta" />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="volta"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #volta></mat-datepicker>
+      </mat-form-field>
+
+      <button mat-flat-button>Buscar</button>
+    </div>
+  </form>
+</app-card>
