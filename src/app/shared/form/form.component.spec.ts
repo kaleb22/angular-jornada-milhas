@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
@@ -25,14 +24,10 @@ describe('FormComponent', () => {
         MatChipsModule,
         MatFormFieldModule,
         MatInputModule,
-        MatDatepickerModule,
         MatNativeDateModule,
         MatButtonModule,
       ],
-      providers: [
-        MatDatepickerModule,
-        importProvidersFrom([BrowserAnimationsModule]),
-      ],
+      providers: [importProvidersFrom([BrowserAnimationsModule])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FormComponent);

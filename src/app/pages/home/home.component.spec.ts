@@ -12,11 +12,8 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeComponent, MatDatepickerModule, MatNativeDateModule],
-      providers: [
-        MatDatepickerModule,
-        importProvidersFrom([BrowserAnimationsModule]),
-      ],
+      imports: [HomeComponent, MatNativeDateModule],
+      providers: [importProvidersFrom([BrowserAnimationsModule])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomeComponent);
