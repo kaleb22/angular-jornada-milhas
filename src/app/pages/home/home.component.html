@@ -8,12 +8,11 @@
   <app-form></app-form>
 
   <h2>Promoções</h2>
-  <div class="card-wrapper">
-    <app-card-busca></app-card-busca>
-    <app-card-busca></app-card-busca>
-    <app-card-busca></app-card-busca>
-    <app-card-busca></app-card-busca>
-    <app-card-busca></app-card-busca>
+  <div class="card-wrapper" *ngIf="promocoes$ | async as promocoes">
+    <app-card-busca
+      *ngFor="let promocao of promocoes"
+      [promocao]="promocao"
+    ></app-card-busca>
   </div>
 
   <h2>Depoimentos</h2>
