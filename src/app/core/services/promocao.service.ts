@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Promocao } from '../types/types';
@@ -8,10 +9,10 @@ import { catchError, Observable, throwError } from 'rxjs';
 })
 export class PromocaoService {
   private httpClient = inject(HttpClient);
-  private readonly API_PATH = 'http://localhost:8080/promocoes';
+  private readonly API_PATH = environment.apiUrl;
 
   promocoes$ = this.httpClient
-    .get<Promocao[]>(this.API_PATH)
+    .get<Promocao[]>(`${this.API_PATH}/promocoes`)
     .pipe(catchError(this.handleError));
 
   private handleError(err: HttpErrorResponse): Observable<never> {
