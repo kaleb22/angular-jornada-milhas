@@ -1,0 +1,49 @@
+<section class="modal">
+  <h2 mat-dialog-title>Viajante</h2>
+  <mat-dialog-content>
+    <div class="modal__container">
+      <div class="modal__age">
+        <p><strong>Adultos</strong></p>
+        <p>(Acima de 12 anos)</p>
+        <div class="modal__age__buttons">
+          <app-action-button action="decrement"></app-action-button>
+          <span>1</span>
+          <app-action-button action="increment"></app-action-button>
+        </div>
+      </div>
+
+      <div class="modal__age">
+        <p><strong>Crianças</strong></p>
+        <p>(Entre 2 e 11 anos)</p>
+        <div class="modal__age__buttons">
+          <app-action-button action="decrement"></app-action-button>
+          <span>1</span>
+          <app-action-button action="increment"></app-action-button>
+        </div>
+      </div>
+
+      <div class="modal__age">
+        <p><strong>Bebês</strong></p>
+        <p>(Até 2 anos)</p>
+        <div class="modal__age__buttons">
+          <app-action-button action="decrement"></app-action-button>
+          <span>1</span>
+          <app-action-button action="increment"></app-action-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal__category">
+      <p><strong>Categoria</strong></p>
+      <mat-chip-listbox aria-label="Seleção de passagens">
+        <mat-chip-option>Econômica</mat-chip-option>
+        <mat-chip-option>Executiva</mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+
+    <div class="modal__actions" style="margin-top: 2rem">
+      <button mat-flat-button color="accent">cancelar</button>
+      <button mat-flat-button>aplicar</button>
+    </div>
+  </mat-dialog-content>
+</section>
