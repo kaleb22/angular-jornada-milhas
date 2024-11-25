@@ -10,6 +10,8 @@ import { importProvidersFrom } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormComponent } from './form.component';
+import { AutocompleteComponent } from '../autocomplete/autocomplete.component';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('FormComponent', () => {
   let component: FormComponent;
@@ -27,7 +29,10 @@ describe('FormComponent', () => {
         MatNativeDateModule,
         MatButtonModule,
       ],
-      providers: [importProvidersFrom([BrowserAnimationsModule])],
+      providers: [
+        importProvidersFrom([BrowserAnimationsModule]),
+        provideHttpClient(),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FormComponent);

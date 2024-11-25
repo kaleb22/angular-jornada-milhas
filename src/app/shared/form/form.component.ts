@@ -12,7 +12,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from '../card/card.component';
 import { ModalComponent } from '../modal/modal.component';
 import { FormService } from '../../core/services/form.service';
-import { EstadosService } from '../../core/services/estados.service';
 import { AutocompleteComponent } from '../autocomplete/autocomplete.component';
 
 @Component({
@@ -36,9 +35,6 @@ import { AutocompleteComponent } from '../autocomplete/autocomplete.component';
 export class FormComponent {
   readonly dialog = inject(MatDialog);
   formService = inject(FormService);
-  estadosService = inject(EstadosService);
-
-  estados$ = this.estadosService.estados$;
 
   openDialog() {
     this.dialog.open(ModalComponent);
