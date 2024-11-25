@@ -1,0 +1,17 @@
+<mat-form-field class="autocomplete" appearance="outline">
+  <mat-icon matPrefix>{{ icon }}</mat-icon>
+  <mat-label>{{ label }}</mat-label>
+  <input
+    type="text"
+    placeholder="{{ label }}"
+    aria-label="estados"
+    matInput
+    [formControl]="controlName"
+    [matAutocomplete]="auto"
+  />
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    @for (estado of filteredOptions$ | async; track estado) {
+      <mat-option [value]="estado">{{ estado }}</mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>

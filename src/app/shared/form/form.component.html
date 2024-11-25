@@ -1,7 +1,10 @@
 <app-card variant="secondary">
-  <form>
+  <form [formGroup]="formService.formGroup">
     <div class="form-container">
-      <mat-button-toggle-group aria-label="Tipo de passagem">
+      <mat-button-toggle-group
+        aria-label="Tipo de passagem"
+        formControlName="idaEvolta"
+      >
         <mat-button-toggle>IDA E VOLTA</mat-button-toggle>
         <mat-button-toggle>SOMENTE IDA</mat-button-toggle>
       </mat-button-toggle-group>
@@ -16,23 +19,21 @@
     </div>
 
     <div class="form-container">
-      <mat-form-field class="form-container__input" appearance="outline">
-        <mat-icon matPrefix>flight_takeoff</mat-icon>
-        <mat-label>Origem</mat-label>
-        <input matInput placeholder="Origem" />
-        <mat-icon matSuffix>search</mat-icon>
-      </mat-form-field>
+      <app-autocomplete
+        icon="flight_takeoff"
+        label="Origem"
+        [controlName]="formService.formGroup.controls['origem']"
+      ></app-autocomplete>
 
       <button mat-icon-button aria-label="Inverter origem e destino">
         <mat-icon>sync_alt</mat-icon>
       </button>
 
-      <mat-form-field class="form-container__input" appearance="outline">
-        <mat-icon matPrefix>flight_land</mat-icon>
-        <mat-label>Destino</mat-label>
-        <input matInput placeholder="Destino" />
-        <mat-icon matSuffix>search</mat-icon>
-      </mat-form-field>
+      <app-autocomplete
+        icon="flight_land"
+        label="Destino"
+        [controlName]="formService.formGroup.controls['destino']"
+      ></app-autocomplete>
 
       <mat-form-field class="form-container__input" appearance="outline">
         <mat-label>Data de ida</mat-label>
