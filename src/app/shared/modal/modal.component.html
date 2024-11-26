@@ -36,8 +36,18 @@
     <div class="modal__category">
       <p><strong>Categoria</strong></p>
       <mat-chip-listbox aria-label="Seleção de passagens">
-        <mat-chip-option>Econômica</mat-chip-option>
-        <mat-chip-option>Executiva</mat-chip-option>
+        <mat-chip-option
+          value="Econômica"
+          [selected]="formService.formBusca.get('tipo')?.value === 'Econômica'"
+          (selectionChange)="formService.changeType($event, 'Econômica')"
+          >Econômica</mat-chip-option
+        >
+        <mat-chip-option
+          value="Executiva"
+          [selected]="formService.formBusca.get('tipo')?.value === 'Executiva'"
+          (selectionChange)="formService.changeType($event, 'Executiva')"
+          >Executiva</mat-chip-option
+        >
       </mat-chip-listbox>
     </div>
 

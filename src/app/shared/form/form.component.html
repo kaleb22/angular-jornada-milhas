@@ -1,5 +1,5 @@
 <app-card variant="secondary">
-  <form [formGroup]="formService.formGroup">
+  <form [formGroup]="formService.formBusca">
     <div class="form-container">
       <mat-button-toggle-group
         aria-label="Tipo de passagem"
@@ -10,7 +10,7 @@
       </mat-button-toggle-group>
 
       <mat-chip-listbox
-        (click)="openDialog()"
+        (click)="formService.openDialog()"
         aria-label="Seleção de passagens"
       >
         <mat-chip-option>1 adulto</mat-chip-option>
@@ -22,7 +22,7 @@
       <app-autocomplete
         icon="flight_takeoff"
         label="Origem"
-        [controlName]="formService.formGroup.controls['origem']"
+        [controlName]="formService.formBusca.controls['origem']"
       ></app-autocomplete>
 
       <button mat-icon-button aria-label="Inverter origem e destino">
@@ -32,7 +32,7 @@
       <app-autocomplete
         icon="flight_land"
         label="Destino"
-        [controlName]="formService.formGroup.controls['destino']"
+        [controlName]="formService.formBusca.controls['destino']"
       ></app-autocomplete>
 
       <mat-form-field class="form-container__input" appearance="outline">

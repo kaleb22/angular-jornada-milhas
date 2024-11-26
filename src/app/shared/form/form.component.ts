@@ -6,11 +6,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialog } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { CardComponent } from '../card/card.component';
-import { ModalComponent } from '../modal/modal.component';
 import { FormService } from '../../core/services/form.service';
 import { AutocompleteComponent } from '../autocomplete/autocomplete.component';
 
@@ -33,10 +31,5 @@ import { AutocompleteComponent } from '../autocomplete/autocomplete.component';
   styleUrl: './form.component.scss',
 })
 export class FormComponent {
-  readonly dialog = inject(MatDialog);
   formService = inject(FormService);
-
-  openDialog() {
-    this.dialog.open(ModalComponent);
-  }
 }
