@@ -28,6 +28,14 @@ export class FormService {
     this.dialog.open(ModalComponent);
   }
 
+  getControl(controlName: string): FormControl {
+    const control = this.formBusca.get(controlName);
+    if (!control) {
+      throw new Error(`FormControl with name ${controlName} dosen't exist`);
+    }
+    return control as FormControl;
+  }
+
   getPassengersDescription(): string {
     let description = '';
 
