@@ -18,3 +18,10 @@ export interface FormBusca {
   origem: FormControl<string | null>;
   destino: FormControl<string | null>;
 }
+
+export interface Depoimento {
+  id: number;
+  texto: string;
+  autor: string;
+  avatar: string;
+}

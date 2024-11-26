@@ -1,11 +1,13 @@
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 import { BannerComponent } from '../../shared/banner/banner.component';
 import { ContainerComponent } from '../../shared/container/container.component';
 import { CardBuscaComponent } from '../../shared/card-busca/card-busca.component';
 import { CardDepoimentoComponent } from '../../shared/card-depoimento/card-depoimento.component';
 import { FormComponent } from '../../shared/form/form.component';
 import { PromocaoService } from '../../core/services/promocao.service';
-import { CommonModule } from '@angular/common';
+import { DepoimentosService } from '../../core/services/depoimentos.service';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +25,8 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeComponent {
   private promocaoService = inject(PromocaoService);
+  private depoimentoService = inject(DepoimentosService);
 
   promocoes$ = this.promocaoService.promocoes$;
+  depoimentos$ = this.depoimentoService.depoimentos$;
 }
