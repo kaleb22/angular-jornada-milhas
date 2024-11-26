@@ -5,6 +5,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ActionButtonComponent } from '../action-button/action-button.component';
 import { FormService } from '../../core/services/form.service';
+import { PassageiroSelectComponent } from '../passageiro-select/passageiro-select.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-modal',
@@ -13,7 +15,8 @@ import { FormService } from '../../core/services/form.service';
     MatDialogModule,
     MatButtonModule,
     MatChipsModule,
-    ActionButtonComponent,
+    PassageiroSelectComponent,
+    ReactiveFormsModule,
   ],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss',

@@ -3,33 +3,27 @@
   <mat-dialog-content>
     <div class="modal__container">
       <div class="modal__age">
-        <p><strong>Adultos</strong></p>
-        <p>(Acima de 12 anos)</p>
-        <div class="modal__age__buttons">
-          <app-action-button action="decrement"></app-action-button>
-          <span>1</span>
-          <app-action-button action="increment"></app-action-button>
-        </div>
+        <app-passageiro-select
+          [formControl]="formService.getControl('adultos')"
+          title="Adultos"
+          description="(Acima de 12 anos)"
+        ></app-passageiro-select>
       </div>
 
       <div class="modal__age">
-        <p><strong>Crianças</strong></p>
-        <p>(Entre 2 e 11 anos)</p>
-        <div class="modal__age__buttons">
-          <app-action-button action="decrement"></app-action-button>
-          <span>1</span>
-          <app-action-button action="increment"></app-action-button>
-        </div>
+        <app-passageiro-select
+          [formControl]="formService.getControl('criancas')"
+          title="Crianças"
+          description="(Entre 2 e 11 anos)"
+        ></app-passageiro-select>
       </div>
 
       <div class="modal__age">
-        <p><strong>Bebês</strong></p>
-        <p>(Até 2 anos)</p>
-        <div class="modal__age__buttons">
-          <app-action-button action="decrement"></app-action-button>
-          <span>1</span>
-          <app-action-button action="increment"></app-action-button>
-        </div>
+        <app-passageiro-select
+          [formControl]="formService.getControl('bebes')"
+          title="Bebês"
+          description="(Até 2 anos)"
+        ></app-passageiro-select>
       </div>
     </div>
 
