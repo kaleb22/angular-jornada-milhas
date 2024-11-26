@@ -1,12 +1,12 @@
 <app-card variant="secondary">
-  <form [formGroup]="formService.formBusca">
+  <form [formGroup]="formService.formBusca" (ngSubmit)="onSubmit()">
     <div class="form-container">
       <mat-button-toggle-group
         aria-label="Tipo de passagem"
         formControlName="idaEvolta"
       >
-        <mat-button-toggle>IDA E VOLTA</mat-button-toggle>
-        <mat-button-toggle>SOMENTE IDA</mat-button-toggle>
+        <mat-button-toggle [value]="true">IDA E VOLTA</mat-button-toggle>
+        <mat-button-toggle [value]="false">SOMENTE IDA</mat-button-toggle>
       </mat-button-toggle-group>
 
       <mat-chip-listbox
