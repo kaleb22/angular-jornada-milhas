@@ -32,4 +32,8 @@ import { AutocompleteComponent } from '../autocomplete/autocomplete.component';
 })
 export class FormComponent {
   formService = inject(FormService);
+
+  onSubmit() {
+    console.log(this.formService.formBusca.value);
+  }
 }
