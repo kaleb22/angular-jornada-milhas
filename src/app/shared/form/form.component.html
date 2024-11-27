@@ -1,0 +1,69 @@
+<app-card variant="secondary">
+  <form [formGroup]="formService.formBusca" (ngSubmit)="onSubmit()">
+    <div class="form-container">
+      <mat-button-toggle-group
+        aria-label="Tipo de passagem"
+        formControlName="idaEvolta"
+      >
+        <mat-button-toggle [value]="true">IDA E VOLTA</mat-button-toggle>
+        <mat-button-toggle [value]="false">SOMENTE IDA</mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <mat-chip-listbox
+        (click)="formService.openDialog()"
+        aria-label="Seleção de passagens"
+      >
+        <mat-chip-option>{{
+          formService.getPassengersDescription()
+        }}</mat-chip-option>
+        <mat-chip-option>{{
+          formService.formBusca.get("tipo")?.value
+        }}</mat-chip-option>
+      </mat-chip-listbox>
+    </div>
+
+    <div class="form-container">
+      <app-autocomplete
+        icon="flight_takeoff"
+        label="Origem"
+        [controlName]="formService.formBusca.controls['origem']"
+      ></app-autocomplete>
+
+      <button
+        mat-icon-button
+        aria-label="Inverter origem e destino"
+        (click)="changeOrigin()"
+      >
+        <mat-icon>sync_alt</mat-icon>
+      </button>
+
+      <app-autocomplete
+        icon="flight_land"
+        label="Destino"
+        [controlName]="formService.formBusca.controls['destino']"
+      ></app-autocomplete>
+
+      <mat-form-field class="form-container__input" appearance="outline">
+        <mat-label>Data de ida</mat-label>
+        <input matInput [matDatepicker]="ida" />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="ida"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #ida></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="form-container__input" appearance="outline">
+        <mat-label>Data de volta</mat-label>
+        <input matInput [matDatepicker]="volta" />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="volta"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #volta></mat-datepicker>
+      </mat-form-field>
+
+      <button mat-flat-button>Buscar</button>
+    </div>
+  </form>
+</app-card>

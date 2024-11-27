@@ -1,0 +1,29 @@
+<app-banner
+  [src]="'imagens/banner-homepage.png'"
+  [alt]="'Main banner'"
+></app-banner>
+
+<app-container>
+  <h2>Passagens</h2>
+  <app-form></app-form>
+
+  <h2>Promoções</h2>
+  <div class="card-wrapper" *ngIf="promocoes$ | async as promocoes">
+    <app-card-busca
+      *ngFor="let promocao of promocoes"
+      [promocao]="promocao"
+    ></app-card-busca>
+  </div>
+
+  <h2>Depoimentos</h2>
+  <div class="card-wrapper">
+    @for (depoimento of depoimentos$ | async; track depoimento.id) {
+      <app-card-depoimento [depoimento]="depoimento"></app-card-depoimento>
+    }
+  </div>
+</app-container>
+
+<app-banner
+  [src]="'imagens/banner-homepage-rodape.png'"
+  [alt]="'Banner of rodape section'"
+></app-banner>

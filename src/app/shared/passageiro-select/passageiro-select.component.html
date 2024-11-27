@@ -1,0 +1,15 @@
+<p>
+  <strong>{{ title }}</strong>
+</p>
+<p>{{ description }}</p>
+<div class="passenger-button-container">
+  <app-action-button
+    action="decrement"
+    (click)="decrement()"
+  ></app-action-button>
+  <span>{{ value }}</span>
+  <app-action-button
+    action="increment"
+    (click)="increment()"
+  ></app-action-button>
+</div>

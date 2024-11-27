@@ -1,0 +1,52 @@
+<section class="modal">
+  <h2 mat-dialog-title>Viajante</h2>
+  <mat-dialog-content>
+    <div class="modal__container">
+      <div class="modal__age">
+        <app-passageiro-select
+          [formControl]="formService.getControl('adultos')"
+          title="Adultos"
+          description="(Acima de 12 anos)"
+        ></app-passageiro-select>
+      </div>
+
+      <div class="modal__age">
+        <app-passageiro-select
+          [formControl]="formService.getControl('criancas')"
+          title="Crianças"
+          description="(Entre 2 e 11 anos)"
+        ></app-passageiro-select>
+      </div>
+
+      <div class="modal__age">
+        <app-passageiro-select
+          [formControl]="formService.getControl('bebes')"
+          title="Bebês"
+          description="(Até 2 anos)"
+        ></app-passageiro-select>
+      </div>
+    </div>
+
+    <div class="modal__category">
+      <p><strong>Categoria</strong></p>
+      <mat-chip-listbox aria-label="Seleção de passagens">
+        <mat-chip-option
+          value="Econômica"
+          [selected]="formService.formBusca.get('tipo')?.value === 'Econômica'"
+          (selectionChange)="formService.changeType($event, 'Econômica')"
+          >Econômica</mat-chip-option
+        >
+        <mat-chip-option
+          value="Executiva"
+          [selected]="formService.formBusca.get('tipo')?.value === 'Executiva'"
+          (selectionChange)="formService.changeType($event, 'Executiva')"
+          >Executiva</mat-chip-option
+        >
+      </mat-chip-listbox>
+    </div>
+
+    <div class="modal__actions" style="margin-top: 2rem">
+      <button mat-flat-button (click)="closeModal()">aplicar</button>
+    </div>
+  </mat-dialog-content>
+</section>
