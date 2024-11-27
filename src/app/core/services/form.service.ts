@@ -28,6 +28,10 @@ export class FormService {
     this.dialog.open(ModalComponent);
   }
 
+  closeDialog() {
+    this.dialog.closeAll();
+  }
+
   getControl(controlName: string): FormControl {
     const control = this.formBusca.get(controlName);
     if (!control) {

@@ -1,12 +1,11 @@
-import { FormBusca } from './../../core/types/types';
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ActionButtonComponent } from '../action-button/action-button.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { FormService } from '../../core/services/form.service';
 import { PassageiroSelectComponent } from '../passageiro-select/passageiro-select.component';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-modal',
@@ -23,4 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class ModalComponent {
   formService = inject(FormService);
+
+  closeModal(): void {
+    this.formService.closeDialog();
+  }
 }
