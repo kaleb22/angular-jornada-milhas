@@ -36,4 +36,11 @@ export class FormComponent {
   onSubmit() {
     console.log(this.formService.formBusca.value);
   }
+
+  changeOrigin() {
+    const origem = this.formService.formBusca.get('origem')?.value;
+    const destino = this.formService.formBusca.get('destino')?.value;
+
+    this.formService.formBusca.patchValue({ origem: destino, destino: origem });
+  }
 }

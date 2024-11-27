@@ -13,8 +13,12 @@
         (click)="formService.openDialog()"
         aria-label="Seleção de passagens"
       >
-        <mat-chip-option>1 adulto</mat-chip-option>
-        <mat-chip-option>econômica</mat-chip-option>
+        <mat-chip-option>{{
+          formService.getPassengersDescription()
+        }}</mat-chip-option>
+        <mat-chip-option>{{
+          formService.formBusca.get("tipo")?.value
+        }}</mat-chip-option>
       </mat-chip-listbox>
     </div>
 
@@ -25,7 +29,11 @@
         [controlName]="formService.formBusca.controls['origem']"
       ></app-autocomplete>
 
-      <button mat-icon-button aria-label="Inverter origem e destino">
+      <button
+        mat-icon-button
+        aria-label="Inverter origem e destino"
+        (click)="changeOrigin()"
+      >
         <mat-icon>sync_alt</mat-icon>
       </button>
 

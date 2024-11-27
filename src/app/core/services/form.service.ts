@@ -18,7 +18,7 @@ export class FormService {
       origem: new FormControl(''),
       destino: new FormControl(''),
       tipo: new FormControl('Econômica'),
-      adultos: new FormControl(0),
+      adultos: new FormControl(1),
       criancas: new FormControl(0),
       bebes: new FormControl(0),
     });
