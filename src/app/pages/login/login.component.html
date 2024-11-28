@@ -14,13 +14,13 @@
       <mat-card-header>
         <mat-card-title>Login</mat-card-title>
       </mat-card-header>
-      <form>
+      <form [formGroup]="loginForm">
         <mat-form-field>
           <mat-label>Email ou CPF</mat-label>
           <input
             type="email"
             matInput
-            [formControl]="email"
+            formControlName="email"
             placeholder="Digite o seu e-mail ou CPF"
           />
         </mat-form-field>
@@ -29,12 +29,12 @@
           <input
             type="password"
             matInput
-            [formControl]="password"
+            formControlName="password"
             placeholder="Digite a sua senha"
           />
         </mat-form-field>
         <mat-card-actions>
-          <button mat-flat-button>ACESSAR MINHA CONTA</button>
+          <button mat-flat-button (click)="login()">ACESSAR MINHA CONTA</button>
         </mat-card-actions>
         <p>
           Ainda não possui conta?
