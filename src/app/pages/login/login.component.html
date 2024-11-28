@@ -1,0 +1,68 @@
+<app-banner
+  src="imagens/banner-login.png"
+  alt="Main banner of login page"
+></app-banner>
+
+<section class="login-component">
+  <mat-card class="login">
+    <div class="image-container">
+      <figure>
+        <img src="imagens/simbolo-bussola.png" alt="an image of a compass" />
+      </figure>
+    </div>
+    <div class="form-container">
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+      <form [formGroup]="loginForm">
+        <mat-form-field>
+          <mat-label>Email ou CPF</mat-label>
+          <input
+            type="email"
+            matInput
+            formControlName="email"
+            placeholder="Digite o seu e-mail ou CPF"
+          />
+          @if (loginForm.get("email")?.errors?.["required"]) {
+            <mat-error>E-mail obrigatório</mat-error>
+          }
+
+          @if (
+            loginForm.get("email")?.errors?.["email"] &&
+            loginForm.get("email")?.touched
+          ) {
+            <mat-error>Formato do e-mail inválido</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Senha</mat-label>
+          <input
+            type="password"
+            matInput
+            formControlName="password"
+            placeholder="Digite a sua senha"
+          />
+
+          @if (loginForm.get("password")?.errors?.["required"]) {
+            <mat-error>Senha obrigatória</mat-error>
+          }
+        </mat-form-field>
+        <mat-card-actions>
+          <button
+            mat-flat-button
+            (click)="login()"
+            [disabled]="loginForm.invalid"
+          >
+            ACESSAR MINHA CONTA
+          </button>
+        </mat-card-actions>
+        <p>
+          Ainda não possui conta?
+          <a href="#"
+            ><strong><u>Clique aqui para se cadastrar!</u></strong></a
+          >
+        </p>
+      </form>
+    </div>
+  </mat-card>
+</section>
