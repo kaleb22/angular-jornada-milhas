@@ -11,6 +11,8 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 
 import { BannerComponent } from '../../shared/banner/banner.component';
+import { AuthService } from '../../core/services/auth.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -27,6 +29,8 @@ import { BannerComponent } from '../../shared/banner/banner.component';
 })
 export class LoginComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
+  private authService = inject(AuthService);
+
   loginForm: FormGroup;
 
   ngOnInit(): void {
@@ -37,6 +41,19 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
-    console.log('logged successfully, ', this.loginForm.value);
+    const email = this.loginForm.value.email;
+    const password = this.loginForm.value.password;
+
+    this.authService
+      .auth(email, password)
+      .pipe(take(1))
+      .subscribe({
+        next: (value) => {
+          console.log('logged successfully, ', value);
+        },
+        error: (err) => {
+          console.log('login error ', err);
+        },
+      });
   }
 }
