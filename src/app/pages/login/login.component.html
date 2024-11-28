@@ -23,6 +23,16 @@
             formControlName="email"
             placeholder="Digite o seu e-mail ou CPF"
           />
+          @if (loginForm.get("email")?.errors?.["required"]) {
+            <mat-error>E-mail obrigatório</mat-error>
+          }
+
+          @if (
+            loginForm.get("email")?.errors?.["email"] &&
+            loginForm.get("email")?.touched
+          ) {
+            <mat-error>Formato do e-mail inválido</mat-error>
+          }
         </mat-form-field>
         <mat-form-field>
           <mat-label>Senha</mat-label>
@@ -32,9 +42,19 @@
             formControlName="password"
             placeholder="Digite a sua senha"
           />
+
+          @if (loginForm.get("password")?.errors?.["required"]) {
+            <mat-error>Senha obrigatória</mat-error>
+          }
         </mat-form-field>
         <mat-card-actions>
-          <button mat-flat-button (click)="login()">ACESSAR MINHA CONTA</button>
+          <button
+            mat-flat-button
+            (click)="login()"
+            [disabled]="loginForm.invalid"
+          >
+            ACESSAR MINHA CONTA
+          </button>
         </mat-card-actions>
         <p>
           Ainda não possui conta?
