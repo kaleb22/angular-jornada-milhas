@@ -1,0 +1,199 @@
+<div class="center" style="margin-top: 3rem">
+  <app-card variant="secondary">
+    <div class="form__title">
+      <h1>Crie sua conta</h1>
+    </div>
+
+    <section>
+      <div class="form__perfil">
+        <h2>Dados pessoais</h2>
+        <button mat-stroked-button color="primary">
+          <mat-icon>logout</mat-icon>
+          DESLOGAR
+        </button>
+      </div>
+    </section>
+
+    <form [formGroup]="formGeneric">
+      <mat-form-field class="full-width">
+        <mat-label>Nome completo</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Digite o seu nome"
+          formControlName="nome"
+        />
+        @if (formGeneric.value.nome) {
+          <button
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="formGeneric.value.nome = ''"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        }
+        @if (formGeneric.get("nome")?.errors?.["required"]) {
+          <mat-error>nome é obrigatório</mat-error>
+        }
+      </mat-form-field>
+      <div class="form__grid">
+        <mat-form-field>
+          <mat-label>Data de nascimento</mat-label>
+          <input
+            matInput
+            [matDatepicker]="dataNascimento"
+            formControlName="dataNascimento"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="dataNascimento"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #dataNascimento></mat-datepicker>
+          @if (formGeneric.get("dataNascimento")?.errors?.["required"]) {
+            <mat-error>data de nascimento é obrigatório</mat-error>
+          }
+        </mat-form-field>
+        <div>
+          <label>Gênero</label><br />
+          <mat-radio-group aria-label="Gênero" formControlName="genero">
+            <mat-radio-button value="feminino">Feminino</mat-radio-button>
+            <mat-radio-button value="masculino">Masculino</mat-radio-button>
+            <mat-radio-button value="n/a"
+              >Prefiro não informar</mat-radio-button
+            >
+          </mat-radio-group>
+        </div>
+        <mat-form-field>
+          <mat-label>CPF</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Digite o seu CPF"
+            formControlName="cpf"
+          />
+          @if (formGeneric.get("cpf")?.errors?.["required"]) {
+            <mat-error>CPF é obrigatório</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Telefone</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="+XX XXXX-XXXX"
+            formControlName="telefone"
+          />
+          @if (formGeneric.get("telefone")?.errors?.["required"]) {
+            <mat-error>telefone é obrigatório</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Cidade</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Digite sua cidade"
+            formControlName="cidade"
+          />
+          @if (formGeneric.get("cidade")?.errors?.["required"]) {
+            <mat-error>cidade é obrigatório</mat-error>
+          }
+        </mat-form-field>
+        <div>
+          <app-autocomplete
+            label="estado"
+            placeholder="Digite o seu estado"
+            [controlName]="estado"
+            appearance="fill"
+          ></app-autocomplete>
+          @if (estado.errors && estado.touched) {
+            <mat-error>estado é obrigatório</mat-error>
+          }
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+      <h2>Dados de acesso</h2>
+      <div class="form__grid">
+        <mat-form-field>
+          <mat-label>E-mail</mat-label>
+          <input
+            type="email"
+            matInput
+            placeholder="Digite o seu e-mail"
+            formControlName="email"
+          />
+          @if (formGeneric.get("email")?.errors?.["required"]) {
+            <mat-error>E-mail obrigatório</mat-error>
+          }
+
+          @if (
+            formGeneric.get("email")?.errors?.["email"] &&
+            formGeneric.get("email")?.touched
+          ) {
+            <mat-error>Formato do e-mail inválido</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Confirmar E-mail</mat-label>
+          <input
+            type="email"
+            matInput
+            placeholder="Digite o seu e-mail novamente"
+            formControlName="confirmaEmail"
+          />
+          @if (formGeneric.get("confirmaEmail")?.errors?.["required"]) {
+            <mat-error>E-mail obrigatório</mat-error>
+          }
+
+          @if (
+            formGeneric.get("confirmaEmail")?.errors?.["email"] &&
+            formGeneric.get("confirmaEmail")?.touched
+          ) {
+            <mat-error>Formato do e-mail inválido</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Senha</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder="Digite a sua senha"
+            formControlName="senha"
+          />
+          @if (formGeneric.get("senha")?.errors?.["required"]) {
+            <mat-error>senha é obrigatório</mat-error>
+          }
+          @if (formGeneric.get("senha")?.errors?.["minlength"]) {
+            <mat-error>senha deve ter no mínimo 3 caracteres</mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Confirma senha</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder="Digite a sua senha novamente"
+            formControlName="confirmaSenha"
+          />
+          @if (formGeneric.get("confirmaSenha")?.errors?.["required"]) {
+            <mat-error>senha é obrigatório</mat-error>
+          }
+          @if (formGeneric.get("confirmaSenha")?.errors?.["minlength"]) {
+            <mat-error>senha deve ter no mínimo 3 caracteres</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <mat-checkbox formControlName="aceitarTermos" class="full-width"
+        >Li e aceito os termos e condições deste cadastro *</mat-checkbox
+      >
+      <button
+        mat-flat-button
+        (click)="createAccount()"
+        [disabled]="formGeneric.invalid"
+      >
+        CRIAR MINHA CONTA
+      </button>
+    </form>
+  </app-card>
+</div>
