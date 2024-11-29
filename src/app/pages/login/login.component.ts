@@ -9,10 +9,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { take } from 'rxjs';
 
 import { BannerComponent } from '../../shared/banner/banner.component';
 import { AuthService } from '../../core/services/auth.service';
-import { take } from 'rxjs';
 
 @Component({
   selector: 'app-login',

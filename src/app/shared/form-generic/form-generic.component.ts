@@ -1,5 +1,5 @@
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import {
   FormBuilder,
@@ -38,8 +38,11 @@ import { MatDividerModule } from '@angular/material/divider';
   styleUrl: './form-generic.component.scss',
 })
 export class FormGenericComponent implements OnInit {
-  formGeneric: FormGroup;
+  @Input() isPerfil: boolean;
+
   private formBuilder = inject(FormBuilder);
+
+  formGeneric: FormGroup;
   estado = new FormControl('', [Validators.required]);
 
   ngOnInit(): void {

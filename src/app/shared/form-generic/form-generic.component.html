@@ -1,18 +1,20 @@
 <div class="center" style="margin-top: 3rem">
   <app-card variant="secondary">
-    <div class="form__title">
+    <div class="form__center">
       <h1>Crie sua conta</h1>
     </div>
 
-    <section>
-      <div class="form__perfil">
-        <h2>Dados pessoais</h2>
-        <button mat-stroked-button color="primary">
-          <mat-icon>logout</mat-icon>
-          DESLOGAR
-        </button>
-      </div>
-    </section>
+    @if (isPerfil) {
+      <section>
+        <div class="form__perfil">
+          <h2>Dados pessoais</h2>
+          <button mat-stroked-button color="primary">
+            <mat-icon>logout</mat-icon>
+            DESLOGAR
+          </button>
+        </div>
+      </section>
+    }
 
     <form [formGroup]="formGeneric">
       <mat-form-field class="full-width">
@@ -112,8 +114,10 @@
           }
         </div>
       </div>
-      <mat-divider></mat-divider>
-      <h2>Dados de acesso</h2>
+      @if (isPerfil) {
+        <mat-divider></mat-divider>
+        <h2>Dados de acesso</h2>
+      }
       <div class="form__grid">
         <mat-form-field>
           <mat-label>E-mail</mat-label>
@@ -187,6 +191,8 @@
       <mat-checkbox formControlName="aceitarTermos" class="full-width"
         >Li e aceito os termos e condições deste cadastro *</mat-checkbox
       >
+    </form>
+    <div class="form__center">
       <button
         mat-flat-button
         (click)="createAccount()"
@@ -194,6 +200,6 @@
       >
         CRIAR MINHA CONTA
       </button>
-    </form>
+    </div>
   </app-card>
 </div>
