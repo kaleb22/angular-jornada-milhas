@@ -1,5 +1,12 @@
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Component, inject, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import {
   FormBuilder,
@@ -39,6 +46,7 @@ import { MatDividerModule } from '@angular/material/divider';
 })
 export class FormGenericComponent implements OnInit {
   @Input() isPerfil: boolean;
+  @Output() emitClick = new EventEmitter();
 
   private formBuilder = inject(FormBuilder);
 
@@ -71,7 +79,7 @@ export class FormGenericComponent implements OnInit {
     });
   }
 
-  createAccount(): void {
-    console.log('account successfully created');
+  clickAction(): void {
+    this.emitClick.emit();
   }
 }

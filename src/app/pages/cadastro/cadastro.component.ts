@@ -9,4 +9,8 @@ import { FormGenericComponent } from '../../shared/form-generic/form-generic.com
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.scss',
 })
-export class CadastroComponent {}
+export class CadastroComponent {
+  signUp(): void {
+    console.log('signed up successfully');
+  }
+}
