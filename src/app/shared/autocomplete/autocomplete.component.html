@@ -1,10 +1,14 @@
-<mat-form-field class="autocomplete" appearance="outline">
-  <mat-icon matPrefix>{{ icon }}</mat-icon>
+<mat-form-field
+  [ngClass]="{ autocomplete: appearance === 'outline' }"
+  [appearance]="appearance"
+>
+  @if (icon) {
+    <mat-icon matPrefix>{{ icon }}</mat-icon>
+  }
   <mat-label>{{ label }}</mat-label>
   <input
     type="text"
-    placeholder="{{ label }}"
-    aria-label="estados"
+    placeholder="{{ placeholder }}"
     matInput
     [formControl]="controlName"
     [matAutocomplete]="auto"

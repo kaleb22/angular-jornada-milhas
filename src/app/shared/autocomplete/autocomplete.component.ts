@@ -1,7 +1,10 @@
 import { AfterViewInit, Component, inject, Input, OnInit } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import {
+  MatFormFieldAppearance,
+  MatFormFieldModule,
+} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,8 +28,10 @@ import { EstadosService } from '../../core/services/estados.service';
 })
 export class AutocompleteComponent implements OnInit, AfterViewInit {
   @Input() icon: string;
+  @Input() placeholder: string;
   @Input() label: string;
   @Input() controlName: FormControl;
+  @Input() appearance: MatFormFieldAppearance;
 
   private estadosService = inject(EstadosService);
   estados$ = this.estadosService.estados$;
