@@ -4,7 +4,12 @@
   gap: 12px;
   margin: 16px 0;
 
-  &__input {
-    margin-bottom: -1.25em;
+  button {
+    margin-bottom: 1.25rem;
   }
+}
+
+.input-width {
+  max-width: 12.375rem;
+  margin-bottom: 1.25rem;
 }
