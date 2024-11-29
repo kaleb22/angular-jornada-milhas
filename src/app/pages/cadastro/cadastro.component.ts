@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+
 import { BannerComponent } from '../../shared/banner/banner.component';
 import { FormGenericComponent } from '../../shared/form-generic/form-generic.component';
+import { FormGenericService } from '../../core/services/form-generic.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -10,7 +12,10 @@ import { FormGenericComponent } from '../../shared/form-generic/form-generic.com
   styleUrl: './cadastro.component.scss',
 })
 export class CadastroComponent {
+  private formGenericService = inject(FormGenericService);
+
   signUp(): void {
-    console.log('signed up successfully');
+    const signForm = this.formGenericService.getForm();
+    console.log('signed up successfully ', signForm?.value);
   }
 }

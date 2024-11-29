@@ -19,11 +19,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { CardComponent } from '../card/card.component';
 import { AutocompleteComponent } from '../autocomplete/autocomplete.component';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatDividerModule } from '@angular/material/divider';
+import { FormGenericService } from '../../core/services/form-generic.service';
 
 @Component({
   selector: 'app-form-generic',
@@ -49,6 +50,7 @@ export class FormGenericComponent implements OnInit {
   @Output() emitClick = new EventEmitter();
 
   private formBuilder = inject(FormBuilder);
+  private genericFormService = inject(FormGenericService);
 
   formGeneric: FormGroup;
   estado = new FormControl('', [Validators.required]);
@@ -77,6 +79,8 @@ export class FormGenericComponent implements OnInit {
       ]),
       aceitarTermos: new FormControl(false, [Validators.requiredTrue]),
     });
+
+    this.genericFormService.setForm(this.formGeneric);
   }
 
   clickAction(): void {

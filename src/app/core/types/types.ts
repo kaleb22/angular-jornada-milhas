@@ -7,7 +7,7 @@ export interface Promocao {
   preco: number;
 }
 
-export interface Estados {
+export interface Estado {
   id: number;
   nome: string;
   sigla: string;
@@ -28,4 +28,16 @@ export interface Depoimento {
   texto: string;
   autor: string;
   avatar: string;
+}
+
+export interface User {
+  nome: string;
+  nascimento: string;
+  cpf: string;
+  telefone: string;
+  email: string;
+  senha: string;
+  genero: string;
+  cidade: string;
+  estado: Estado;
 }
