@@ -156,6 +156,10 @@
           ) {
             <mat-error>Formato do e-mail inválido</mat-error>
           }
+
+          @if (formGeneric.get("confirmaEmail")?.errors?.["equalTo"]) {
+            <mat-error>E-mails não coincidem</mat-error>
+          }
         </mat-form-field>
         <mat-form-field>
           <mat-label>Senha</mat-label>
@@ -185,6 +189,9 @@
           }
           @if (formGeneric.get("confirmaSenha")?.errors?.["minlength"]) {
             <mat-error>senha deve ter no mínimo 3 caracteres</mat-error>
+          }
+          @if (formGeneric.get("confirmaSenha")?.errors?.["equalTo"]) {
+            <mat-error>Senhas não coincidem</mat-error>
           }
         </mat-form-field>
       </div>

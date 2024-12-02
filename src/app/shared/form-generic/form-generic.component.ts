@@ -25,6 +25,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { CardComponent } from '../card/card.component';
 import { AutocompleteComponent } from '../autocomplete/autocomplete.component';
 import { FormGenericService } from '../../core/services/form-generic.service';
+import { FormValidator } from '../form-validators';
 
 @Component({
   selector: 'app-form-generic',
@@ -64,18 +65,25 @@ export class FormGenericComponent implements OnInit {
       telefone: new FormControl('', [Validators.required]),
       cidade: new FormControl('', [Validators.required]),
       estado: this.estado,
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email,
+        FormValidator.equalTo('confirmaEmail'),
+      ]),
       confirmaEmail: new FormControl('', [
         Validators.required,
         Validators.email,
+        FormValidator.equalTo('email'),
       ]),
       senha: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
+        FormValidator.equalTo('confirmaSenha'),
       ]),
       confirmaSenha: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
+        FormValidator.equalTo('senha'),
       ]),
       aceitarTermos: new FormControl(false, [Validators.requiredTrue]),
     });
