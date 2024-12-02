@@ -58,7 +58,7 @@ export class FormGenericComponent implements OnInit {
   ngOnInit(): void {
     this.formGeneric = this.formBuilder.group({
       nome: new FormControl('', [Validators.required]),
-      dataNascimento: new FormControl('', [Validators.required]),
+      nascimento: new FormControl('', [Validators.required]),
       genero: new FormControl('feminino', [Validators.required]),
       cpf: new FormControl('', [Validators.required]),
       telefone: new FormControl('', [Validators.required]),

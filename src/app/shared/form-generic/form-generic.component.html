@@ -44,15 +44,15 @@
           <mat-label>Data de nascimento</mat-label>
           <input
             matInput
-            [matDatepicker]="dataNascimento"
-            formControlName="dataNascimento"
+            [matDatepicker]="nascimento"
+            formControlName="nascimento"
           />
           <mat-datepicker-toggle
             matIconSuffix
-            [for]="dataNascimento"
+            [for]="nascimento"
           ></mat-datepicker-toggle>
-          <mat-datepicker #dataNascimento></mat-datepicker>
-          @if (formGeneric.get("dataNascimento")?.errors?.["required"]) {
+          <mat-datepicker #nascimento></mat-datepicker>
+          @if (formGeneric.get("nascimento")?.errors?.["required"]) {
             <mat-error>data de nascimento é obrigatório</mat-error>
           }
         </mat-form-field>

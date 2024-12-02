@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { debounceTime, map, Observable, startWith, take } from 'rxjs';
 
 import { EstadosService } from '../../core/services/estados.service';
+import { Estado } from '../../core/types/types';
 
 @Component({
   selector: 'app-autocomplete',
@@ -35,12 +36,12 @@ export class AutocompleteComponent implements OnInit, AfterViewInit {
 
   private estadosService = inject(EstadosService);
   estados$ = this.estadosService.estados$;
-  filteredOptions$: Observable<string[]>;
-  estados: string[];
+  filteredOptions$: Observable<Estado[]>;
+  estados: Estado[];
 
   ngOnInit(): void {
     this.estadosService.estados$.pipe(take(1)).subscribe((res) => {
-      this.estados = res.map((estado) => estado.nome);
+      this.estados = res;
     });
   }
 
@@ -52,11 +53,16 @@ export class AutocompleteComponent implements OnInit, AfterViewInit {
     );
   }
 
-  private filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
+  private filter(value: string | Estado): Estado[] {
+    const nomeEstado = typeof value === 'string' ? value : value.nome;
+    const filterValue = nomeEstado.toLowerCase();
 
     return this.estados.filter((option) =>
-      option.toLowerCase().includes(filterValue),
+      option.nome.toLowerCase().includes(filterValue),
     );
+  }
+
+  displayFn(estado: Estado) {
+    return estado && estado.nome ? estado.nome : '';
   }
 }
