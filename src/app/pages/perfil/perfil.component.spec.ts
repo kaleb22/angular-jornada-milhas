@@ -1,4 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { MatNativeDateModule } from '@angular/material/core';
+import { importProvidersFrom } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PerfilComponent } from './perfil.component';
 
@@ -8,7 +12,11 @@ describe('PerfilComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PerfilComponent],
+      imports: [PerfilComponent, MatNativeDateModule],
+      providers: [
+        provideHttpClient(),
+        importProvidersFrom([BrowserAnimationsModule]),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PerfilComponent);
