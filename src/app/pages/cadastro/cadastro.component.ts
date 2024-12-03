@@ -24,7 +24,7 @@ export class CadastroComponent {
 
     if (signForm?.valid) {
       const userData = signForm.getRawValue() as User;
-      this.cadastroService.cadastrar(userData).subscribe({
+      this.cadastroService.signUp(userData).subscribe({
         next: () => this.router.navigateByUrl('/login'),
         error: (e) => console.log('erro no cadastro ', e),
       });

@@ -54,7 +54,7 @@ export class FormGenericComponent implements OnInit {
   @Output() signOutClick = new EventEmitter();
 
   private formBuilder = inject(FormBuilder);
-  private genericFormService = inject(FormGenericService);
+  private formGenericService = inject(FormGenericService);
 
   formGeneric: FormGroup;
   estado = new FormControl('', [Validators.required]);
@@ -101,7 +101,7 @@ export class FormGenericComponent implements OnInit {
 
     this.formGeneric.get('aceitarTermos')?.updateValueAndValidity();
 
-    this.genericFormService.setForm(this.formGeneric);
+    this.formGenericService.setForm(this.formGeneric);
   }
 
   clickAction(): void {
