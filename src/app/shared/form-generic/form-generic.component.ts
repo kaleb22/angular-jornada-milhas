@@ -47,8 +47,11 @@ import { FormValidator } from '../form-validators';
   styleUrl: './form-generic.component.scss',
 })
 export class FormGenericComponent implements OnInit {
+  @Input() title: string;
+  @Input() btnText: string;
   @Input() isPerfil: boolean;
   @Output() emitClick = new EventEmitter();
+  @Output() signOutClick = new EventEmitter();
 
   private formBuilder = inject(FormBuilder);
   private genericFormService = inject(FormGenericService);
@@ -88,10 +91,24 @@ export class FormGenericComponent implements OnInit {
       aceitarTermos: new FormControl(false, [Validators.requiredTrue]),
     });
 
+    if (this.isPerfil) {
+      this.formGeneric.get('aceitarTermos')?.clearValidators();
+    } else {
+      this.formGeneric
+        .get('aceitarTermos')
+        ?.addValidators([Validators.requiredTrue]);
+    }
+
+    this.formGeneric.get('aceitarTermos')?.updateValueAndValidity();
+
     this.genericFormService.setForm(this.formGeneric);
   }
 
   clickAction(): void {
     this.emitClick.emit();
+  }
+
+  signOut(): void {
+    this.signOutClick.emit();
   }
 }

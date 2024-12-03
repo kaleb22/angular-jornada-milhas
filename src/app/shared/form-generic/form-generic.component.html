@@ -1,14 +1,14 @@
 <div class="center" style="margin-top: 3rem">
   <app-card variant="secondary">
     <div class="form__center">
-      <h1>Crie sua conta</h1>
+      <h1>{{ title }}</h1>
     </div>
 
     @if (isPerfil) {
       <section>
         <div class="form__perfil">
           <h2>Dados pessoais</h2>
-          <button mat-stroked-button color="primary">
+          <button (click)="signOut()" mat-stroked-button color="primary">
             <mat-icon>logout</mat-icon>
             DESLOGAR
           </button>
@@ -195,17 +195,20 @@
           }
         </mat-form-field>
       </div>
-      <mat-checkbox formControlName="aceitarTermos" class="full-width"
-        >Li e aceito os termos e condições deste cadastro *</mat-checkbox
-      >
+      @if (!isPerfil) {
+        <mat-checkbox formControlName="aceitarTermos" class="full-width"
+          >Li e aceito os termos e condições deste cadastro *</mat-checkbox
+        >
+      }
     </form>
     <div class="form__center">
       <button
+        [class.btn-profile]="isPerfil"
         mat-flat-button
         (click)="clickAction()"
         [disabled]="formGeneric.invalid"
       >
-        CRIAR MINHA CONTA
+        {{ btnText }}
       </button>
     </div>
   </app-card>
