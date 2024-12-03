@@ -9,10 +9,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { take } from 'rxjs';
 
 import { BannerComponent } from '../../shared/banner/banner.component';
 import { AuthService } from '../../core/services/auth.service';
-import { take } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -30,6 +31,7 @@ import { take } from 'rxjs';
 export class LoginComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
   private authService = inject(AuthService);
+  private router = inject(Router);
 
   loginForm: FormGroup;
 
@@ -50,6 +52,7 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (value) => {
           console.log('logged successfully, ', value);
+          this.router.navigateByUrl('/home');
         },
         error: (err) => {
           console.log('login error ', err);

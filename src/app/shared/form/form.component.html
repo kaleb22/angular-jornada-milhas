@@ -23,11 +23,14 @@
     </div>
 
     <div class="form-container">
-      <app-autocomplete
-        icon="flight_takeoff"
-        label="Origem"
-        [controlName]="formService.formBusca.controls['origem']"
-      ></app-autocomplete>
+      <div class="input-width">
+        <app-autocomplete
+          icon="flight_takeoff"
+          label="Origem"
+          [controlName]="formService.formBusca.controls['origem']"
+          appearance="outline"
+        ></app-autocomplete>
+      </div>
 
       <button
         mat-icon-button
@@ -37,11 +40,14 @@
         <mat-icon>sync_alt</mat-icon>
       </button>
 
-      <app-autocomplete
-        icon="flight_land"
-        label="Destino"
-        [controlName]="formService.formBusca.controls['destino']"
-      ></app-autocomplete>
+      <div class="input-width">
+        <app-autocomplete
+          icon="flight_land"
+          label="Destino"
+          [controlName]="formService.formBusca.controls['destino']"
+          appearance="outline"
+        ></app-autocomplete>
+      </div>
 
       <mat-form-field class="form-container__input" appearance="outline">
         <mat-label>Data de ida</mat-label>
