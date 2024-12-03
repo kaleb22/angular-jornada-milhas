@@ -16,12 +16,12 @@
       </mat-card-header>
       <form [formGroup]="loginForm">
         <mat-form-field>
-          <mat-label>Email ou CPF</mat-label>
+          <mat-label>Email</mat-label>
           <input
             type="email"
             matInput
             formControlName="email"
-            placeholder="Digite o seu e-mail ou CPF"
+            placeholder="Digite o seu e-mail"
           />
           @if (loginForm.get("email")?.errors?.["required"]) {
             <mat-error>E-mail obrigatório</mat-error>

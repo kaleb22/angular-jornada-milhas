@@ -41,3 +41,7 @@ export interface User {
   cidade: string;
   estado: Estado;
 }
+
+export interface Token {
+  access_token: string;
+}
