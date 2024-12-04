@@ -1,14 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { take } from 'rxjs';
 
 import { BannerComponent } from '../../shared/banner/banner.component';
 import { FormGenericComponent } from '../../shared/form-generic/form-generic.component';
 import { CadastroService } from '../../core/services/cadastro.service';
-import { TokenService } from '../../core/services/token.service';
 import { User } from '../../core/types/types';
 import { FormGenericService } from '../../core/services/form-generic.service';
-import { Router } from '@angular/router';
 import { UserService } from '../../core/services/user.service';
 
 @Component({
@@ -20,7 +19,6 @@ import { UserService } from '../../core/services/user.service';
 })
 export class PerfilComponent implements OnInit {
   private cadastroService = inject(CadastroService);
-  private tokenService = inject(TokenService);
   private formGenericService = inject(FormGenericService);
   private router = inject(Router);
   private userService = inject(UserService);
@@ -31,9 +29,8 @@ export class PerfilComponent implements OnInit {
   form: FormGroup | null;
 
   ngOnInit(): void {
-    this.token = this.tokenService.getToken();
     this.cadastroService
-      .getProfile(this.token)
+      .getProfile()
       .pipe(take(1))
       .subscribe((res) => {
         this.title = `Olá, ${res.nome}!`;
@@ -68,7 +65,7 @@ export class PerfilComponent implements OnInit {
       senha: this.form?.value.senha,
     };
     this.cadastroService
-      .updateProfile(userData, this.token)
+      .updateProfile(userData)
       .pipe(take(1))
       .subscribe({
         next: () => {
