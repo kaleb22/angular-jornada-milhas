@@ -8,6 +8,7 @@ import { CardDepoimentoComponent } from '../../shared/card-depoimento/card-depoi
 import { FormComponent } from '../../shared/form/form.component';
 import { PromocaoService } from '../../core/services/promocao.service';
 import { DepoimentosService } from '../../core/services/depoimentos.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +27,12 @@ import { DepoimentosService } from '../../core/services/depoimentos.service';
 export class HomeComponent {
   private promocaoService = inject(PromocaoService);
   private depoimentoService = inject(DepoimentosService);
+  private router = inject(Router);
 
   promocoes$ = this.promocaoService.promocoes$;
   depoimentos$ = this.depoimentoService.depoimentos$;
+
+  search(event: any): void {
+    this.router.navigateByUrl('/busca');
+  }
 }
