@@ -1,0 +1,9 @@
+<app-banner src="imagens/banner-perfil.png" alt="Profile banner"></app-banner>
+
+<app-form-generic
+  [title]="title"
+  btnText="ATUALIZAR"
+  [isPerfil]="true"
+  (emitClick)="edit()"
+  (signOutClick)="signOut()"
+></app-form-generic>

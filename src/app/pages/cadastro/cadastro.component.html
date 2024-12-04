@@ -1,3 +1,8 @@
 <app-banner src="imagens/banner-cadastro.png" alt="Sign up banner"></app-banner>
 
-<app-form-generic [isPerfil]="false" (emitClick)="signUp()"></app-form-generic>
+<app-form-generic
+  title="Crie sua conta"
+  btnText="CADASTRAR"
+  [isPerfil]="false"
+  (emitClick)="signUp()"
+></app-form-generic>

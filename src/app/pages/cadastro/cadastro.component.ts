@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { BannerComponent } from '../../shared/banner/banner.component';
 import { FormGenericComponent } from '../../shared/form-generic/form-generic.component';
 import { FormGenericService } from '../../core/services/form-generic.service';
 import { CadastroService } from '../../core/services/cadastro.service';
 import { User } from '../../core/types/types';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -24,7 +24,7 @@ export class CadastroComponent {
 
     if (signForm?.valid) {
       const userData = signForm.getRawValue() as User;
-      this.cadastroService.cadastrar(userData).subscribe({
+      this.cadastroService.signUp(userData).subscribe({
         next: () => this.router.navigateByUrl('/login'),
         error: (e) => console.log('erro no cadastro ', e),
       });
