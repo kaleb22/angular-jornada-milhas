@@ -10,10 +10,10 @@ import {
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { take } from 'rxjs';
+import { Router, RouterLink } from '@angular/router';
 
 import { BannerComponent } from '../../shared/banner/banner.component';
 import { AuthService } from '../../core/services/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +24,7 @@ import { Router } from '@angular/router';
     ReactiveFormsModule,
     MatButtonModule,
     MatCardModule,
+    RouterLink,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
