@@ -6,7 +6,16 @@
     <button mat-button>Vender milhas</button>
     <button mat-button>Sobre</button>
 
-    <button mat-raised-button color="primary">CADASTRE-SE</button>
-    <button routerLink="/login" mat-stroked-button>LOGIN</button>
+    @if (user$ | async) {
+      <a routerLink="/perfil">
+        <img src="icones/user.png" alt="User's icon" />
+      </a>
+      <button mat-stroked-button (click)="logout()">SAIR</button>
+    } @else {
+      <button routerLink="/cadastro" mat-raised-button color="primary">
+        CADASTRE-SE
+      </button>
+      <button routerLink="/login" mat-stroked-button>LOGIN</button>
+    }
   </mat-toolbar>
 </header>

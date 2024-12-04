@@ -16,23 +16,11 @@ export class CadastroService {
     return this.httpClient.post<User>(`${this.API_URL}/auth/cadastro`, user);
   }
 
-  getProfile(token: string): Observable<User> {
-    const headers = this.generateHeaders(token);
-    return this.httpClient.get<User>(`${this.API_URL}/auth/perfil`, {
-      headers,
-    });
+  getProfile(): Observable<User> {
+    return this.httpClient.get<User>(`${this.API_URL}/auth/perfil`);
   }
 
-  updateProfile(user: User, token: string) {
-    const headers = this.generateHeaders(token);
-    return this.httpClient.patch<User>(`${this.API_URL}/auth/perfil`, user, {
-      headers,
-    });
-  }
-
-  private generateHeaders(token: string): HttpHeaders {
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
+  updateProfile(user: User) {
+    return this.httpClient.patch<User>(`${this.API_URL}/auth/perfil`, user);
   }
 }
