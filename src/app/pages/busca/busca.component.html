@@ -4,8 +4,12 @@
 ></app-banner>
 <app-container>
   <app-form></app-form>
-  <section>bla bla bla</section>
-  @if (tickets$ | async) {
-    <p>teste</p>
-  }
+  <section class="tickets">
+    <app-passagem-resumo></app-passagem-resumo>
+    <app-passagem-resumo></app-passagem-resumo>
+    <app-passagem-resumo></app-passagem-resumo>
+  </section>
+  <section>
+    <app-passagem-info></app-passagem-info>
+  </section>
 </app-container>
