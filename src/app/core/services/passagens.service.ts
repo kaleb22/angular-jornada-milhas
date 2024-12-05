@@ -18,9 +18,22 @@ export class PassagensService {
     this.searchSubject.next(searchData);
   }
 
-  passagens$ = this.searchSubjectAction$.pipe(
+  tickets$ = this.searchSubjectAction$.pipe(
     switchMap((params) =>
-      this.httpClient.get<ResultadoBusca>(`${this.API_PATH}`, params),
+      this.httpClient.get<ResultadoBusca>(
+        `${this.API_PATH}/passagem/search`,
+        this.generateParams(params),
+      ),
     ),
   );
+
+  private generateParams(searchData: any) {
+    const params = new HttpParams()
+      .append('pagina', searchData.pagina)
+      .append('porPagina', searchData.porPagina)
+      .append('somenteIda', searchData.somenteIda)
+      .append('passageirosAdultos', searchData.passageirosAdultos)
+      .append('tipo', searchData.tipo);
+    return { params };
+  }
 }

@@ -5,4 +5,7 @@
 <app-container>
   <app-form></app-form>
   <section>bla bla bla</section>
+  @if (tickets$ | async) {
+    <p>teste</p>
+  }
 </app-container>
