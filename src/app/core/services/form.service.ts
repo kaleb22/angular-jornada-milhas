@@ -27,6 +27,7 @@ export class FormService {
       adultos: new FormControl(1),
       criancas: new FormControl(0),
       bebes: new FormControl(0),
+      conexoes: new FormControl(0),
     });
 
     idaEvolta.valueChanges.subscribe((val) => {
@@ -60,6 +61,7 @@ export class FormService {
   getSearchData(): DadosBusca {
     const dataIdaControl = this.getControl<Date>('dataIda').value;
     const dataVoltaControl = this.getControl<Date>('dataVolta').value;
+    const conexoesControl = this.getControl<number>('conexoes').value;
 
     const dadosBusca: DadosBusca = {
       pagina: 1,
@@ -76,6 +78,10 @@ export class FormService {
 
     if (dataVoltaControl) {
       dadosBusca.dataVolta = dataVoltaControl.toISOString();
+    }
+
+    if (conexoesControl) {
+      dadosBusca.conexoes = conexoesControl;
     }
 
     return dadosBusca;

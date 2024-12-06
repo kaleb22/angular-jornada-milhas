@@ -23,6 +23,7 @@ export interface FormBusca {
   bebes: FormControl<number | null>;
   dataIda: FormControl<Date | null>;
   dataVolta: FormControl<Date | null>;
+  conexoes: FormControl<number | null>;
 }
 
 export interface Depoimento {
@@ -114,4 +115,9 @@ export interface DadosBusca {
   companhiasId?: number[];
   pagina: number;
   porPagina: number;
+}
+
+export interface OpcoesDeParada {
+  display: string;
+  value: string;
 }
