@@ -21,8 +21,8 @@ export interface FormBusca {
   adultos: FormControl<number | null>;
   criancas: FormControl<number | null>;
   bebes: FormControl<number | null>;
-  dataIda: FormControl<string | null>;
-  dataVolta: FormControl<string | null>;
+  dataIda: FormControl<Date | null>;
+  dataVolta: FormControl<Date | null>;
 }
 
 export interface Depoimento {
@@ -97,14 +97,21 @@ export interface Orcamento {
   total: number;
 }
 
-// export interface Busca {
-//   somenteIda?: boolean;
-//   passageirosAdultos?: number;
-//   passageirosCriancas?: number;
-//   passageirosBebes?: number;
-//   tipo?: string;
-//   dataIda: string;
-//   dataVolta?: string;
-//   pagina?: number;
-//   porPagina: number;
-// }
+export interface DadosBusca {
+  somenteIda?: boolean;
+  passageirosAdultos?: number;
+  passageirosCriancas?: number;
+  passageirosBebes?: number;
+  tipo?: string;
+  origemId?: number;
+  destinoId: number;
+  dataIda: string;
+  dataVolta?: string;
+  precoMin?: number;
+  precoMax?: number;
+  conexoes?: number;
+  tempoVoo?: number;
+  companhiasId?: number[];
+  pagina: number;
+  porPagina: number;
+}

@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatChipSelectionChange } from '@angular/material/chips';
 
-import { FormBusca } from './../types/types';
+import { DadosBusca, FormBusca } from './../types/types';
 import { ModalComponent } from '../../shared/modal/modal.component';
 
 @Injectable({
@@ -15,14 +15,14 @@ export class FormService {
 
   constructor() {
     const idaEvolta = new FormControl(true, [Validators.required]);
-    const dataVolta = new FormControl('', [Validators.required]);
+    const dataVolta = new FormControl(null, [Validators.required]);
 
     this.formBusca = new FormGroup<FormBusca>({
       idaEvolta,
       origem: new FormControl('', [Validators.required]),
       destino: new FormControl('', [Validators.required]),
       tipo: new FormControl('Econômica'),
-      dataIda: new FormControl('', [Validators.required]),
+      dataIda: new FormControl(null, [Validators.required]),
       dataVolta,
       adultos: new FormControl(1),
       criancas: new FormControl(0),
@@ -49,12 +49,36 @@ export class FormService {
     this.dialog.closeAll();
   }
 
-  getControl(controlName: string): FormControl {
+  getControl<T>(controlName: string): FormControl {
     const control = this.formBusca.get(controlName);
     if (!control) {
       throw new Error(`FormControl with name ${controlName} dosen't exist`);
     }
-    return control as FormControl;
+    return control as FormControl<T>;
+  }
+
+  getSearchData(): DadosBusca {
+    const dataIdaControl = this.getControl<Date>('dataIda').value;
+    const dataVoltaControl = this.getControl<Date>('dataVolta').value;
+
+    const dadosBusca: DadosBusca = {
+      pagina: 1,
+      porPagina: 50,
+      somenteIda: this.getControl<boolean>('idaEvolta').value,
+      origemId: this.getControl<number>('origem').value.id,
+      destinoId: this.getControl<number>('destino').value.id,
+      tipo: this.getControl<string>('tipo').value,
+      passageirosAdultos: this.getControl<number>('adultos').value,
+      passageirosCriancas: this.getControl<number>('criancas').value,
+      passageirosBebes: this.getControl<number>('bebes').value,
+      dataIda: dataIdaControl.toISOString(),
+    };
+
+    if (dataVoltaControl) {
+      dadosBusca.dataVolta = dataVoltaControl.toISOString();
+    }
+
+    return dadosBusca;
   }
 
   getPassengersDescription(): string {

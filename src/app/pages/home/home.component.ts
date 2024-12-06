@@ -32,7 +32,7 @@ export class HomeComponent {
   promocoes$ = this.promocaoService.promocoes$;
   depoimentos$ = this.depoimentoService.depoimentos$;
 
-  search(event: any): void {
+  goToSearchPage(): void {
     this.router.navigateByUrl('/busca');
   }
 }

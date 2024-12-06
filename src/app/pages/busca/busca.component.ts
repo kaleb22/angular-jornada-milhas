@@ -6,8 +6,8 @@ import { BannerComponent } from '../../shared/banner/banner.component';
 import { PassagensService } from './../../core/services/passagens.service';
 import { ContainerComponent } from '../../shared/container/container.component';
 import { FormComponent } from '../../shared/form/form.component';
-import { PassagemResumoComponent } from '../../shared/passagem-resumo/passagem-resumo.component';
 import { PassagemInfoComponent } from '../../shared/passagem-info/passagem-info.component';
+import { FormService } from '../../core/services/form.service';
 
 @Component({
   selector: 'app-busca',
@@ -17,7 +17,6 @@ import { PassagemInfoComponent } from '../../shared/passagem-info/passagem-info.
     ContainerComponent,
     FormComponent,
     CommonModule,
-    PassagemResumoComponent,
     PassagemInfoComponent,
   ],
   templateUrl: './busca.component.html',
@@ -25,18 +24,19 @@ import { PassagemInfoComponent } from '../../shared/passagem-info/passagem-info.
 })
 export class BuscaComponent implements AfterViewInit {
   private passagensService = inject(PassagensService);
+  private formService = inject(FormService);
 
   tickets$ = this.passagensService.tickets$.pipe(
     tap((res) => console.log(res)),
   );
 
   ngAfterViewInit(): void {
-    this.passagensService.search({
-      pagina: 1,
-      porPagina: 25,
-      somenteIda: false,
-      passageirosAdultos: 1,
-      tipo: 'Executiva',
-    });
+    this.searchTickets();
+  }
+
+  searchTickets() {
+    console.log('searchTickets emmited');
+    const searchData = this.formService.getSearchData();
+    this.passagensService.search(searchData);
   }
 }

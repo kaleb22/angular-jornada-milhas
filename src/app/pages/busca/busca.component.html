@@ -3,13 +3,12 @@
   alt="Search's page banner"
 ></app-banner>
 <app-container>
-  <app-form></app-form>
+  <app-form (searchEvent)="searchTickets()"></app-form>
   <section class="tickets">
-    <app-passagem-resumo></app-passagem-resumo>
-    <app-passagem-resumo></app-passagem-resumo>
-    <app-passagem-resumo></app-passagem-resumo>
-  </section>
-  <section>
-    <app-passagem-info></app-passagem-info>
+    @if (tickets$ | async; as tickets) {
+      @for (ticket of tickets.resultado; track $index) {
+        <app-passagem-info [passagem]="ticket"></app-passagem-info>
+      }
+    }
   </section>
 </app-container>
