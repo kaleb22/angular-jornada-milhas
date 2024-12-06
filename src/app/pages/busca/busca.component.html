@@ -5,9 +5,9 @@
 <app-container>
   <app-form (searchEvent)="searchTickets()"></app-form>
   <section class="tickets">
-    @if (tickets$ | async; as tickets) {
-      @for (ticket of tickets.resultado; track $index) {
-        <app-passagem-info [passagem]="ticket"></app-passagem-info>
+    @if (retornoBusca$ | async; as retornoBusca) {
+      @for (passagem of retornoBusca.resultado; track $index) {
+        <app-passagem-info [passagem]="passagem"></app-passagem-info>
       }
     }
   </section>

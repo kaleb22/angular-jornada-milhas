@@ -26,7 +26,7 @@ export class BuscaComponent implements AfterViewInit {
   private passagensService = inject(PassagensService);
   private formService = inject(FormService);
 
-  tickets$ = this.passagensService.tickets$.pipe(
+  retornoBusca$ = this.passagensService.retornoBusca$.pipe(
     tap((res) => console.log(res)),
   );
 

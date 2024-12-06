@@ -18,7 +18,7 @@ export class PassagensService {
     this.searchSubject.next(searchData);
   }
 
-  tickets$ = this.searchSubjectAction$.pipe(
+  retornoBusca$ = this.searchSubjectAction$.pipe(
     switchMap((params) =>
       this.httpClient.get<ResultadoBusca>(
         `${this.API_PATH}/passagem/search`,
