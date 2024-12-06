@@ -5,6 +5,11 @@
 <app-container>
   <app-form (searchEvent)="searchTickets()"></app-form>
   <section class="tickets">
+    <aside>
+      <app-passagem-filtros
+        (searchEvent)="searchTickets()"
+      ></app-passagem-filtros>
+    </aside>
     @if (retornoBusca$ | async; as retornoBusca) {
       @for (passagem of retornoBusca.resultado; track $index) {
         <app-passagem-info [passagem]="passagem"></app-passagem-info>

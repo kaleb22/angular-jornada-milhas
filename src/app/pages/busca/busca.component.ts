@@ -8,6 +8,7 @@ import { ContainerComponent } from '../../shared/container/container.component';
 import { FormComponent } from '../../shared/form/form.component';
 import { PassagemInfoComponent } from '../../shared/passagem-info/passagem-info.component';
 import { FormService } from '../../core/services/form.service';
+import { PassagemFiltrosComponent } from '../../shared/passagem-filtros/passagem-filtros.component';
 
 @Component({
   selector: 'app-busca',
@@ -18,6 +19,7 @@ import { FormService } from '../../core/services/form.service';
     FormComponent,
     CommonModule,
     PassagemInfoComponent,
+    PassagemFiltrosComponent,
   ],
   templateUrl: './busca.component.html',
   styleUrl: './busca.component.scss',
