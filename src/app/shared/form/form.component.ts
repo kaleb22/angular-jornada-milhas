@@ -47,7 +47,11 @@ export class FormComponent {
   }
 
   search(): void {
-    const form = this.formService.formBusca.value;
-    this.searchEvent.emit(form);
+    if (this.formService.isFormValid()) {
+      const form = this.formService.formBusca.value;
+      this.searchEvent.emit(form);
+    } else {
+      alert('Required fields must be filled');
+    }
   }
 }

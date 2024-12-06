@@ -1,9 +1,10 @@
-import { FormBusca } from './../types/types';
 import { inject, Injectable } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalComponent } from '../../shared/modal/modal.component';
 import { MatChipSelectionChange } from '@angular/material/chips';
+
+import { FormBusca } from './../types/types';
+import { ModalComponent } from '../../shared/modal/modal.component';
 
 @Injectable({
   providedIn: 'root',
@@ -13,14 +14,30 @@ export class FormService {
   readonly dialog = inject(MatDialog);
 
   constructor() {
+    const idaEvolta = new FormControl(true, [Validators.required]);
+    const dataVolta = new FormControl('', [Validators.required]);
+
     this.formBusca = new FormGroup<FormBusca>({
-      idaEvolta: new FormControl(false),
-      origem: new FormControl(''),
-      destino: new FormControl(''),
+      idaEvolta,
+      origem: new FormControl('', [Validators.required]),
+      destino: new FormControl('', [Validators.required]),
       tipo: new FormControl('Econômica'),
+      dataIda: new FormControl('', [Validators.required]),
+      dataVolta,
       adultos: new FormControl(1),
       criancas: new FormControl(0),
       bebes: new FormControl(0),
+    });
+
+    idaEvolta.valueChanges.subscribe((val) => {
+      if (val) {
+        dataVolta.addValidators([Validators.required]);
+        dataVolta.enable();
+      } else {
+        dataVolta.clearValidators();
+        dataVolta.disable();
+      }
+      dataVolta.updateValueAndValidity();
     });
   }
 
@@ -65,5 +82,9 @@ export class FormService {
     if (event.selected) {
       this.formBusca.patchValue({ tipo: value });
     }
+  }
+
+  isFormValid(): boolean {
+    return this.formBusca.valid;
   }
 }

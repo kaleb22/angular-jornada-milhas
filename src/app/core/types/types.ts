@@ -21,6 +21,8 @@ export interface FormBusca {
   adultos: FormControl<number | null>;
   criancas: FormControl<number | null>;
   bebes: FormControl<number | null>;
+  dataIda: FormControl<string | null>;
+  dataVolta: FormControl<string | null>;
 }
 
 export interface Depoimento {
