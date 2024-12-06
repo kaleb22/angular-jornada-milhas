@@ -7,46 +7,52 @@
         <div class="tickets__grid">
           <div>
             <p><strong>Origem</strong></p>
-            <p>Rio</p>
+            <p>{{ passagem.origem.nome }} ({{ passagem.origem.sigla }})</p>
           </div>
           <div>
             <p><strong>Destino</strong></p>
-            <p>Belo Horizonte</p>
+            <p>{{ passagem.destino.nome }} ({{ passagem.destino.sigla }})</p>
           </div>
         </div>
         <hr />
         <div class="tickets__grid">
           <div>
             <p><strong>Ida</strong></p>
-            <p>12/02</p>
+            <p>{{ passagem.dataIda | date: "dd/MM" }}</p>
           </div>
           <div>
             <p><strong>Volta</strong></p>
-            <p>15/04</p>
+            <p>{{ passagem.dataVolta | date: "dd/MM" }}</p>
           </div>
         </div>
       </div>
       <div>
         <div class="tickets__value">
-          <h2 class="tickets__value--space">R$ 500</h2>
+          <h2 class="tickets__value--space">
+            {{ passagem.total | currency: "BRL" }}
+          </h2>
         </div>
-        <div>
-          <div class="tickets__info">
-            <p>1 Adulto, economica</p>
-            <p>R$420</p>
+        @for (orcamento of passagem.orcamento; track $index) {
+          <div>
+            <div class="tickets__info">
+              <p>{{ orcamento.descricao }}</p>
+              <p>{{ orcamento.preco | currency: "BRL" }}</p>
+            </div>
+            <div class="tickets__info">
+              <p>Taxa de embarque</p>
+              <p>{{ orcamento.taxaEmbarque | currency: "BRL" }}</p>
+            </div>
           </div>
-          <div class="tickets__info">
-            <p>Taxa de embarque</p>
-            <p>R$60</p>
+          <hr />
+          <div>
+            <div class="tickets__info">
+              <p><strong>Total</strong></p>
+              <p>
+                <strong>{{ orcamento.total | currency: "BRL" }}</strong>
+              </p>
+            </div>
           </div>
-        </div>
-        <hr />
-        <div>
-          <div class="tickets__info">
-            <p><strong>Total</strong></p>
-            <p><strong>R$ 500</strong></p>
-          </div>
-        </div>
+        }
         <div class="tickets__info">
           <p>10% de desconto no pix</p>
           <p>ou</p>
