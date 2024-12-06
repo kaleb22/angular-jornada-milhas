@@ -62,6 +62,10 @@ export class FormService {
     const dataIdaControl = this.getControl<Date>('dataIda').value;
     const dataVoltaControl = this.getControl<Date>('dataVolta').value;
     const conexoesControl = this.getControl<number>('conexoes').value;
+    let dataIda = '';
+    if (dataIdaControl) {
+      dataIda = dataIdaControl.toISOString();
+    }
 
     const dadosBusca: DadosBusca = {
       pagina: 1,
@@ -73,7 +77,7 @@ export class FormService {
       passageirosAdultos: this.getControl<number>('adultos').value,
       passageirosCriancas: this.getControl<number>('criancas').value,
       passageirosBebes: this.getControl<number>('bebes').value,
-      dataIda: dataIdaControl.toISOString(),
+      dataIda: dataIda,
     };
 
     if (dataVoltaControl) {
