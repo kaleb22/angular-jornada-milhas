@@ -24,6 +24,7 @@ export interface FormBusca {
   dataIda: FormControl<Date | null>;
   dataVolta: FormControl<Date | null>;
   conexoes: FormControl<number | null>;
+  companhias: FormControl<number[] | null>;
 }
 
 export interface Depoimento {

@@ -28,6 +28,7 @@ export class FormService {
       criancas: new FormControl(0),
       bebes: new FormControl(0),
       conexoes: new FormControl(0),
+      companhias: new FormControl(null),
     });
 
     idaEvolta.valueChanges.subscribe((val) => {
