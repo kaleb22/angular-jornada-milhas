@@ -12,9 +12,11 @@
           (searchEvent)="searchTickets()"
         ></app-passagem-filtros>
       </aside>
-      @for (passagem of retornoBusca.resultado; track $index) {
-        <app-passagem-info [passagem]="passagem"></app-passagem-info>
-      }
+      <div style="max-width: 48.188rem">
+        @for (passagem of retornoBusca.resultado; track $index) {
+          <app-passagem-info [passagem]="passagem"></app-passagem-info>
+        }
+      </div>
     }
   </section>
 </app-container>
