@@ -35,7 +35,7 @@ export class ParadasComponent implements OnInit, OnDestroy {
     },
   ];
 
-  opcoesSelecionadas: OpcoesDeParada | null;
+  opcaoSelecionada: OpcoesDeParada | null;
   conexoesControl: FormControl<number | null>;
   private readonly unsub$ = new Subject<void>();
 
@@ -46,7 +46,7 @@ export class ParadasComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsub$))
       .subscribe((val) => {
         if (!val) {
-          this.opcoesSelecionadas = null;
+          this.opcaoSelecionada = null;
         }
       });
   }
@@ -57,25 +57,25 @@ export class ParadasComponent implements OnInit, OnDestroy {
   }
 
   connectionSelected(option: OpcoesDeParada): boolean {
-    return this.opcoesSelecionadas === option;
+    return this.opcaoSelecionada === option;
   }
 
   includeConnection(option: OpcoesDeParada) {
-    if (!this.opcoesSelecionadas) {
+    if (!this.opcaoSelecionada) {
       return false;
     } else {
-      return this.opcoesSelecionadas?.value > option.value;
+      return this.opcaoSelecionada?.value > option.value;
     }
   }
 
   alternateConnection(option: OpcoesDeParada, checked: boolean) {
     if (checked) {
-      this.opcoesSelecionadas = option;
+      this.opcaoSelecionada = option;
       this.formService.formBusca.patchValue({ conexoes: Number(option.value) });
       return;
     }
 
-    this.opcoesSelecionadas = null;
+    this.opcaoSelecionada = null;
     this.formService.formBusca.patchValue({ conexoes: null });
   }
 }
