@@ -25,10 +25,12 @@ export class FormService {
       dataIda: new FormControl(null, [Validators.required]),
       dataVolta,
       adultos: new FormControl(1),
-      criancas: new FormControl(0),
-      bebes: new FormControl(0),
-      conexoes: new FormControl(0),
+      criancas: new FormControl(null),
+      bebes: new FormControl(null),
+      conexoes: new FormControl(null),
       companhias: new FormControl(null),
+      precoMax: new FormControl(null),
+      precoMin: new FormControl(null),
     });
 
     idaEvolta.valueChanges.subscribe((val) => {
@@ -63,6 +65,9 @@ export class FormService {
     const dataIdaControl = this.getControl<Date>('dataIda').value;
     const dataVoltaControl = this.getControl<Date>('dataVolta').value;
     const conexoesControl = this.getControl<number>('conexoes').value;
+    const precoMinControl = this.getControl<number>('precoMin').value;
+    const precoMaxControl = this.getControl<number>('precoMax').value;
+
     let dataIda = '';
     if (dataIdaControl) {
       dataIda = dataIdaControl.toISOString();
@@ -89,6 +94,14 @@ export class FormService {
 
     if (conexoesControl) {
       dadosBusca.conexoes = conexoesControl;
+    }
+
+    if (precoMaxControl) {
+      dadosBusca.precoMax = precoMaxControl;
+    }
+
+    if (precoMinControl) {
+      dadosBusca.precoMin = precoMinControl;
     }
 
     return dadosBusca;

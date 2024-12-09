@@ -39,6 +39,8 @@ export class PassagemFiltrosComponent implements OnInit {
   @Output() searchEvent = new EventEmitter();
 
   companhias: Companhia[] = [];
+  precoMin: number;
+  precoMax: number;
 
   /*
    * In order to create a set of companies with no objects repeated
@@ -49,6 +51,9 @@ export class PassagemFiltrosComponent implements OnInit {
    */
   ngOnInit(): void {
     let companhiaArray: string[] = [];
+
+    this.precoMax = this.resultadoBusca.precoMax;
+    this.precoMin = this.resultadoBusca.precoMin;
 
     this.resultadoBusca.resultado.forEach((passagem) => {
       companhiaArray.push(JSON.stringify(passagem.companhia));

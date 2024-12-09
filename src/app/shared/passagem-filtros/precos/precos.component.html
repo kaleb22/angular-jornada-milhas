@@ -1,1 +1,17 @@
-<p>precos works!</p>
+<section>
+  <h5>Preços</h5>
+  <div class="price">
+    <div>
+      <label for="preco-min">De</label>
+      <p id="preco-min">{{ precoMin | currency: "BRL" }}</p>
+    </div>
+    <div>
+      <label for="preco-max">Até</label>
+      <p>{{ precoMax | currency: "BRL" }}</p>
+    </div>
+  </div>
+  <mat-slider [min]="precoMin" [max]="precoMax" step="100" style="width: 90%">
+    <input matSliderStartThumb id="preco-min" [formControl]="precoMinControl" />
+    <input matSliderEndThumb id="preco-max" [formControl]="precoMaxControl" />
+  </mat-slider>
+</section>

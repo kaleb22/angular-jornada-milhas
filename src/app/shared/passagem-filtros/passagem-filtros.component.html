@@ -11,7 +11,7 @@
     <hr />
     <app-companhias [companhias]="companhias" />
     <hr />
-    <app-precos />
+    <app-precos [precoMax]="precoMax" [precoMin]="precoMin" />
     <button mat-flat-button (click)="search()">Aplicar</button>
   </app-card>
 </form>
