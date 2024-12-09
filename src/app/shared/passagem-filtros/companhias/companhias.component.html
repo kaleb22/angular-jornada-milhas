@@ -1,1 +1,12 @@
-<p>companhias works!</p>
+<section>
+  <h5>Companhias</h5>
+  <div>
+    @for (companhia of companhias; track companhia.id) {
+      <p>
+        <mat-checkbox color="primary" [value]="companhia.nome">
+          {{ companhia.nome }}
+        </mat-checkbox>
+      </p>
+    }
+  </div>
+</section>
