@@ -52,8 +52,10 @@ export class CompanhiasComponent implements OnInit, OnDestroy {
       );
     }
 
+    console.log(this.companhiasSelecionadas);
     this.fomrService.formBusca.patchValue({
       companhias: this.companhiasSelecionadas.map((comp) => comp.id),
     });
+    console.log(this.companhiaControl.value);
   }
 }

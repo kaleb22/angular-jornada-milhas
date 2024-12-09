@@ -79,6 +79,8 @@ export class FormService {
       passageirosCriancas: this.getControl<number>('criancas').value,
       passageirosBebes: this.getControl<number>('bebes').value,
       dataIda: dataIda,
+      companhiasId: this.getControl<number[]>('companhias').value,
+      conexoes: this.getControl<number>('conexoes').value,
     };
 
     if (dataVoltaControl) {

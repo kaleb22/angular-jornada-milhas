@@ -1,4 +1,4 @@
-<form class="filters">
+<form [formGroup]="formService.formBusca" class="filters" (ngSubmit)="search()">
   <app-card [variant]="'secondary'">
     <div class="filters__header">
       <h4>Filtro</h4>
