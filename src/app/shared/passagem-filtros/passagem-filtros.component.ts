@@ -79,4 +79,13 @@ export class PassagemFiltrosComponent implements OnInit {
     }
     this.searchEvent.emit();
   }
+
+  clearFilters(): void {
+    this.formService.formBusca.patchValue({
+      conexoes: null,
+      companhias: null,
+      precoMax: this.precoMax,
+      precoMin: this.precoMin,
+    });
+  }
 }
