@@ -13,6 +13,32 @@
         ></app-passagem-filtros>
       </aside>
       <div style="max-width: 48.188rem">
+        @if (recommend) {
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 2rem;
+            "
+          >
+            <app-passagem-resumo
+              title="Menor preço"
+              [value]="this.ticketCheapest.total"
+              [tripTime]="this.ticketCheapest.tempoVoo"
+            ></app-passagem-resumo>
+            <app-passagem-resumo
+              title="Recomendado"
+              [value]="this.ticketRecommended.total"
+              [tripTime]="this.ticketRecommended.tempoVoo"
+              [isRecommended]="true"
+            ></app-passagem-resumo>
+            <app-passagem-resumo
+              title="Menor tempo"
+              [value]="this.ticketFatest.total"
+              [tripTime]="this.ticketFatest.tempoVoo"
+            ></app-passagem-resumo>
+          </div>
+        }
         @for (passagem of retornoBusca.resultado; track $index) {
           <app-passagem-info [passagem]="passagem"></app-passagem-info>
         }
