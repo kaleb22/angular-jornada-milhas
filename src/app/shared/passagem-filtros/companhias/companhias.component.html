@@ -1,0 +1,17 @@
+<section>
+  <h5>Companhias</h5>
+  <div>
+    @for (companhia of companhias; track companhia.id) {
+      <p>
+        <mat-checkbox
+          color="primary"
+          [value]="companhia.id.toString()"
+          (change)="changeCompany(companhia, $event.checked)"
+          [checked]="selectCompany(companhia)"
+        >
+          {{ companhia.nome }}
+        </mat-checkbox>
+      </p>
+    }
+  </div>
+</section>

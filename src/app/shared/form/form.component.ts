@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
@@ -33,6 +33,8 @@ import { AutocompleteComponent } from '../autocomplete/autocomplete.component';
 export class FormComponent {
   formService = inject(FormService);
 
+  @Output() searchEvent = new EventEmitter();
+
   onSubmit() {
     console.log(this.formService.formBusca.value);
   }
@@ -42,5 +44,13 @@ export class FormComponent {
     const destino = this.formService.formBusca.get('destino')?.value;
 
     this.formService.formBusca.patchValue({ origem: destino, destino: origem });
+  }
+
+  search(): void {
+    if (this.formService.isFormValid()) {
+      this.searchEvent.emit();
+    } else {
+      alert('Required fields must be filled');
+    }
   }
 }

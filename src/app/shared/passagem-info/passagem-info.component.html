@@ -1,0 +1,65 @@
+<mat-card>
+  <mat-card-content>
+    <div class="tickets__grid">
+      <div>
+        <h2>Ida e Volta</h2>
+        <hr />
+        <div class="tickets__grid">
+          <div>
+            <p><strong>Origem</strong></p>
+            <p>{{ passagem.origem.nome }} ({{ passagem.origem.sigla }})</p>
+          </div>
+          <div>
+            <p><strong>Destino</strong></p>
+            <p>{{ passagem.destino.nome }} ({{ passagem.destino.sigla }})</p>
+          </div>
+        </div>
+        <hr />
+        <div class="tickets__grid">
+          <div>
+            <p><strong>Ida</strong></p>
+            <p>{{ passagem.dataIda | date: "dd/MM" }}</p>
+          </div>
+          <div>
+            <p><strong>Volta</strong></p>
+            <p>{{ passagem.dataVolta | date: "dd/MM" }}</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="tickets__value">
+          <h2 class="tickets__value--space">
+            {{ passagem.total | currency: "BRL" }}
+          </h2>
+        </div>
+        @for (orcamento of passagem.orcamento; track $index) {
+          <div>
+            <div class="tickets__info">
+              <p>{{ orcamento.descricao }}</p>
+              <p>{{ orcamento.preco | currency: "BRL" }}</p>
+            </div>
+            <div class="tickets__info">
+              <p>Taxa de embarque</p>
+              <p>{{ orcamento.taxaEmbarque | currency: "BRL" }}</p>
+            </div>
+          </div>
+          <hr />
+          <div>
+            <div class="tickets__info">
+              <p><strong>Total</strong></p>
+              <p>
+                <strong>{{ orcamento.total | currency: "BRL" }}</strong>
+              </p>
+            </div>
+          </div>
+        }
+        <div class="tickets__info" style="align-items: center">
+          <p class="tickets__desc">10% de desconto no pix</p>
+          <p>ou</p>
+          <p class="tickets__desc">12x no cartão de crédito</p>
+        </div>
+        <button mat-flat-button class="tickets__button">COMPRAR</button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

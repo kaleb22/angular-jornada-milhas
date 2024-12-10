@@ -5,7 +5,7 @@
 
 <app-container>
   <h2>Passagens</h2>
-  <app-form></app-form>
+  <app-form (searchEvent)="goToSearchPage()"></app-form>
 
   <h2>Promoções</h2>
   <div class="card-wrapper" *ngIf="promocoes$ | async as promocoes">

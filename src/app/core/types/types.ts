@@ -21,6 +21,12 @@ export interface FormBusca {
   adultos: FormControl<number | null>;
   criancas: FormControl<number | null>;
   bebes: FormControl<number | null>;
+  dataIda: FormControl<Date | null>;
+  dataVolta: FormControl<Date | null>;
+  conexoes: FormControl<number | null>;
+  companhias: FormControl<number[] | null>;
+  precoMin: FormControl<number | null>;
+  precoMax: FormControl<number | null>;
 }
 
 export interface Depoimento {
@@ -44,4 +50,77 @@ export interface User {
 
 export interface Token {
   access_token: string;
+}
+
+export interface ResultadoBusca {
+  paginaAtual: number;
+  ultimaPagina: number;
+  total: number;
+  precoMin: number;
+  precoMax: number;
+  resultado: Passagem[];
+}
+
+export interface Passagem {
+  tipo: string;
+  precoIda: number;
+  precoVolta: number;
+  taxaEmbarque: number;
+  conexoes: number;
+  tempoVoo: number;
+  origem: Origem;
+  destino: Destino;
+  companhia: Companhia;
+  dataIda: string;
+  dataVolta: string;
+  total: number;
+  orcamento: Orcamento[];
+}
+
+export interface Origem {
+  id: number;
+  nome: string;
+  sigla: string;
+}
+
+export interface Destino {
+  id: number;
+  nome: string;
+  sigla: string;
+}
+
+export interface Companhia {
+  id: number;
+  nome: string;
+}
+
+export interface Orcamento {
+  descricao: string;
+  preco: number;
+  taxaEmbarque: number;
+  total: number;
+}
+
+export interface DadosBusca {
+  somenteIda?: boolean;
+  passageirosAdultos?: number;
+  passageirosCriancas?: number;
+  passageirosBebes?: number;
+  tipo?: string;
+  origemId?: number;
+  destinoId: number;
+  dataIda: string;
+  dataVolta?: string;
+  precoMin?: number;
+  precoMax?: number;
+  conexoes?: number;
+  tempoVoo?: number;
+  companhiasId?: number[];
+  pagina: number;
+  porPagina: number;
+}
+
+export interface OpcoesDeParada {
+  display: string;
+  value: string;
 }

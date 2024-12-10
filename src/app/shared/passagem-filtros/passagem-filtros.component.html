@@ -1,0 +1,17 @@
+<form [formGroup]="formService.formBusca" class="filters" (ngSubmit)="search()">
+  <app-card [variant]="'secondary'">
+    <div class="filters__header">
+      <h4>Filtro</h4>
+      <button mat-stroked-button type="button" (click)="clearFilters()">
+        <mat-icon>backspace</mat-icon>
+        Limpar
+      </button>
+    </div>
+    <app-paradas />
+    <hr />
+    <app-companhias [companhias]="companhias" />
+    <hr />
+    <app-precos [precoMax]="precoMax" [precoMin]="precoMin" />
+    <button mat-flat-button (click)="search()">Aplicar</button>
+  </app-card>
+</form>

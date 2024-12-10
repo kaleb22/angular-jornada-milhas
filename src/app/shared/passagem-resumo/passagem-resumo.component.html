@@ -1,0 +1,13 @@
+<div class="tickets">
+  <mat-card
+    appearance="outlined"
+    class="tickets__summary"
+    [ngClass]="{ tickets__recommended: isRecommended }"
+  >
+    <mat-card-header>
+      <mat-card-title>{{ title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content> {{ value | currency: "BRL" }} </mat-card-content>
+    <mat-card-footer>{{ tripTime }}h de viagem</mat-card-footer>
+  </mat-card>
+</div>

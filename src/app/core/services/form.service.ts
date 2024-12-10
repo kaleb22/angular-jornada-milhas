@@ -1,9 +1,10 @@
-import { FormBusca } from './../types/types';
 import { inject, Injectable } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalComponent } from '../../shared/modal/modal.component';
 import { MatChipSelectionChange } from '@angular/material/chips';
+
+import { DadosBusca, FormBusca } from './../types/types';
+import { ModalComponent } from '../../shared/modal/modal.component';
 
 @Injectable({
   providedIn: 'root',
@@ -13,14 +14,34 @@ export class FormService {
   readonly dialog = inject(MatDialog);
 
   constructor() {
+    const idaEvolta = new FormControl(true, [Validators.required]);
+    const dataVolta = new FormControl(null, [Validators.required]);
+
     this.formBusca = new FormGroup<FormBusca>({
-      idaEvolta: new FormControl(false),
-      origem: new FormControl(''),
-      destino: new FormControl(''),
+      idaEvolta,
+      origem: new FormControl('', [Validators.required]),
+      destino: new FormControl('', [Validators.required]),
       tipo: new FormControl('Econômica'),
+      dataIda: new FormControl(null, [Validators.required]),
+      dataVolta,
       adultos: new FormControl(1),
-      criancas: new FormControl(0),
-      bebes: new FormControl(0),
+      criancas: new FormControl(null),
+      bebes: new FormControl(null),
+      conexoes: new FormControl(null),
+      companhias: new FormControl(null),
+      precoMax: new FormControl(null),
+      precoMin: new FormControl(null),
+    });
+
+    idaEvolta.valueChanges.subscribe((val) => {
+      if (val) {
+        dataVolta.addValidators([Validators.required]);
+        dataVolta.enable();
+      } else {
+        dataVolta.clearValidators();
+        dataVolta.disable();
+      }
+      dataVolta.updateValueAndValidity();
     });
   }
 
@@ -32,12 +53,58 @@ export class FormService {
     this.dialog.closeAll();
   }
 
-  getControl(controlName: string): FormControl {
+  getControl<T>(controlName: string): FormControl {
     const control = this.formBusca.get(controlName);
     if (!control) {
       throw new Error(`FormControl with name ${controlName} dosen't exist`);
     }
-    return control as FormControl;
+    return control as FormControl<T>;
+  }
+
+  getSearchData(): DadosBusca {
+    const dataIdaControl = this.getControl<Date>('dataIda').value;
+    const dataVoltaControl = this.getControl<Date>('dataVolta').value;
+    const conexoesControl = this.getControl<number>('conexoes').value;
+    const precoMinControl = this.getControl<number>('precoMin').value;
+    const precoMaxControl = this.getControl<number>('precoMax').value;
+
+    let dataIda = '';
+    if (dataIdaControl) {
+      dataIda = dataIdaControl.toISOString();
+    }
+
+    const dadosBusca: DadosBusca = {
+      pagina: 1,
+      porPagina: 50,
+      somenteIda: this.getControl<boolean>('idaEvolta').value,
+      origemId: this.getControl<number>('origem').value.id,
+      destinoId: this.getControl<number>('destino').value.id,
+      tipo: this.getControl<string>('tipo').value,
+      passageirosAdultos: this.getControl<number>('adultos').value,
+      passageirosCriancas: this.getControl<number>('criancas').value,
+      passageirosBebes: this.getControl<number>('bebes').value,
+      dataIda: dataIda,
+      companhiasId: this.getControl<number[]>('companhias').value,
+      conexoes: this.getControl<number>('conexoes').value,
+    };
+
+    if (dataVoltaControl) {
+      dadosBusca.dataVolta = dataVoltaControl.toISOString();
+    }
+
+    if (conexoesControl) {
+      dadosBusca.conexoes = conexoesControl;
+    }
+
+    if (precoMaxControl) {
+      dadosBusca.precoMax = precoMaxControl;
+    }
+
+    if (precoMinControl) {
+      dadosBusca.precoMin = precoMinControl;
+    }
+
+    return dadosBusca;
   }
 
   getPassengersDescription(): string {
@@ -65,5 +132,9 @@ export class FormService {
     if (event.selected) {
       this.formBusca.patchValue({ tipo: value });
     }
+  }
+
+  isFormValid(): boolean {
+    return this.formBusca.valid;
   }
 }
