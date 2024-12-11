@@ -36,4 +36,9 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/busca/busca.component').then((m) => m.BuscaComponent),
   },
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./pages/erro/erro.component').then((m) => m.ErroComponent),
+  },
 ];
