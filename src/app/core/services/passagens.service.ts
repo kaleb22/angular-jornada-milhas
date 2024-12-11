@@ -35,7 +35,6 @@ export class PassagensService {
         return '';
       })
       .join('&');
-    console.log('query -> ', query);
     return query;
   }
 }

@@ -1,16 +1,12 @@
 import { Routes } from '@angular/router';
 
 import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
-import { CadastroComponent } from './pages/cadastro/cadastro.component';
-import { PerfilComponent } from './pages/perfil/perfil.component';
 import { authGuard } from './core/guards/auth.guard';
-import { BuscaComponent } from './pages/busca/busca.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'perfil',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
@@ -19,19 +15,30 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent,
+    loadComponent: () =>
+      import('./pages/login/login.component').then((m) => m.LoginComponent),
   },
   {
     path: 'cadastro',
-    component: CadastroComponent,
+    loadComponent: () =>
+      import('./pages/cadastro/cadastro.component').then(
+        (m) => m.CadastroComponent,
+      ),
   },
   {
     path: 'perfil',
-    component: PerfilComponent,
+    loadComponent: () =>
+      import('./pages/perfil/perfil.component').then((m) => m.PerfilComponent),
     canActivate: [authGuard],
   },
   {
     path: 'busca',
-    component: BuscaComponent,
+    loadComponent: () =>
+      import('./pages/busca/busca.component').then((m) => m.BuscaComponent),
+  },
+  {
+    path: '**',
+    loadComponent: () =>
+      import('./pages/erro/erro.component').then((m) => m.ErroComponent),
   },
 ];
