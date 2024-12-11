@@ -1,7 +1,10 @@
 import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
+import { inject } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
+import { MensagemService } from '../services/mensagem.service';
 
 export const erroInterceptor: HttpInterceptorFn = (req, next) => {
+  const msgService = inject(MensagemService);
   return next(req).pipe(
     catchError((e: HttpErrorResponse) => {
       let errorMsg = 'Unkown error';
@@ -14,11 +17,10 @@ export const erroInterceptor: HttpInterceptorFn = (req, next) => {
       } else if (e.status === 401) {
         errorMsg = 'unauthorized access';
       } else if (e.status === 500) {
-        errorMsg = 'Server internal error';
+        errorMsg = 'Internal server error';
       }
 
-      console.error(e);
-      console.error(errorMsg);
+      msgService.openSnackBar(errorMsg);
       return throwError(() => new Error('Ops, ocorreu um erro'));
     }),
   );
