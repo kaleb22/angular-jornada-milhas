@@ -35,10 +35,6 @@ export class FormComponent {
 
   @Output() searchEvent = new EventEmitter();
 
-  onSubmit() {
-    console.log(this.formService.formBusca.value);
-  }
-
   changeOrigin() {
     const origem = this.formService.formBusca.get('origem')?.value;
     const destino = this.formService.formBusca.get('destino')?.value;
