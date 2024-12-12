@@ -7,6 +7,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { routes } from './app.routes';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { erroInterceptor } from './core/interceptors/erro.interceptor';
+import { spinnerInterceptor } from './core/interceptors/spinner.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,6 +15,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideNativeDateAdapter(),
-    provideHttpClient(withInterceptors([authInterceptor, erroInterceptor])),
+    provideHttpClient(
+      withInterceptors([authInterceptor, erroInterceptor, spinnerInterceptor]),
+    ),
   ],
 };
