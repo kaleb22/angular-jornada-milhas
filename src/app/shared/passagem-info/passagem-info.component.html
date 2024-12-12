@@ -2,7 +2,12 @@
   <mat-card-content>
     <div class="tickets__grid">
       <div>
-        <h2>Ida e Volta</h2>
+        @if (passagem.dataIda && passagem.dataVolta) {
+          <h2>Ida e Volta</h2>
+        } @else {
+          <h2>Ida</h2>
+        }
+
         <hr />
         <div class="tickets__grid">
           <div>
@@ -20,7 +25,7 @@
             <p><strong>Ida</strong></p>
             <p>{{ passagem.dataIda | date: "dd/MM" }}</p>
           </div>
-          <div>
+          <div *ngIf="passagem.dataVolta">
             <p><strong>Volta</strong></p>
             <p>{{ passagem.dataVolta | date: "dd/MM" }}</p>
           </div>
