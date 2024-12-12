@@ -4,6 +4,8 @@ Jornada milhas is an Angular project developed to study a variety of Angular top
 
 ## 🌟 Angular topics adressed
 
+This project was developed using Angular v18 with Standalone components.
+
 - Angular material componentization to build reuse components in order to create complex interfaces.
 - Using services to handle form state and validations.
 - Building reactive forms to handle user sign up, login and search features.
@@ -12,7 +14,8 @@ Jornada milhas is an Angular project developed to study a variety of Angular top
 - Route guards to functional routes in order to restric access to certain features.
 - Interceptors - how to manipulate HTTP requests in an effient way and error handling.
 - Search, filter and get data fom API in an effient way.
-- Lazy loading to improve performance
+- Lazy loading to improve performance.
+- New control flow syntax (if, for).
 
 ### Prerequisit to run locally
 
