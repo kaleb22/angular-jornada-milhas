@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: 'http://jornada-milhas.com.br',
+  apiUrl: 'https://jornada-milhas-api-hyl4.onrender.com',
 };
