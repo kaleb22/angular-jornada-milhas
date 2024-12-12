@@ -37,7 +37,7 @@ export class AutocompleteComponent implements OnInit, AfterViewInit {
   private estadosService = inject(EstadosService);
   estados$ = this.estadosService.estados$;
   filteredOptions$: Observable<Estado[]>;
-  estados: Estado[];
+  estados: Estado[] = [];
 
   ngOnInit(): void {
     this.estadosService.estados$.pipe(take(1)).subscribe((res) => {
