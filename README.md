@@ -30,6 +30,10 @@ This project was developed using Angular v18 with Standalone components.
 You can find a live preview of the application [here](https://angular-jornada-milhas.vercel.app).
 The project was deployed with Vercel.
 
+To see all the tickets registered in the database you can go directly to the 'https://angular-jornada-milhas.vercel.app/busca' url.
+
+⚠️ Because the API is hosted on render and the trafic to the application is very low, it gets shut down a lot. So, you may experience a certain delay (around 50 seconds) to get the response from API on your first request.
+
 ### Prerequisit to run locally
 
 This project uses an API developed to serve the data. You can find the repository here: [jornada-milhas-api](https://github.com/viniciosneves/jornada-milhas-api). You're going to need it to run the project locally.
