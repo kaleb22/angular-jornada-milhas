@@ -45,6 +45,24 @@ export class FormService {
     });
   }
 
+  resetForm(): void {
+    this.formBusca.reset({
+      idaEvolta: true,
+      origem: '',
+      destino: '',
+      tipo: 'Econômica',
+      dataIda: null,
+      dataVolta: null,
+      adultos: 1,
+      criancas: null,
+      bebes: null,
+      conexoes: null,
+      companhias: null,
+      precoMax: null,
+      precoMin: null,
+    });
+  }
+
   openDialog() {
     this.dialog.open(ModalComponent);
   }
