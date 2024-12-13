@@ -3,6 +3,7 @@
   margin: 0;
   display: grid;
   grid-template-rows: auto auto 1fr auto;
+  position: relative;
 }
 
 .overlay {
@@ -14,4 +15,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 99999;
 }
