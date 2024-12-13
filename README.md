@@ -30,7 +30,13 @@ This project was developed using Angular v18 with Standalone components.
 You can find a live preview of the application [here](https://angular-jornada-milhas.vercel.app).
 The project was deployed with Vercel.
 
-To see all the tickets registered in the database you can go directly to the 'https://angular-jornada-milhas.vercel.app/busca' url.
+- To see all the tickets registered in the database you can go directly to this url -> 'https://angular-jornada-milhas.vercel.app/busca'
+- To see a specif flight ticket registed in the data base, you can search, for example:
+  - Origin: Minas gerais
+  - Destiny: Rio de Janeiro
+  ***
+  - Origin: São Paulo
+  - Destiny: Alagoas
 
 ⚠️ Because the API is hosted on render and the trafic to the application is very low, it gets shut down a lot. So, you may experience a certain delay (around 50 seconds) to get the response from API on your first request.
 
