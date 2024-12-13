@@ -6,16 +6,29 @@ Jornada milhas is an Angular project developed to study a variety of Angular top
 
 This project was developed using Angular v18 with Standalone components.
 
-- Angular material componentization to build reuse components in order to create complex interfaces.
-- Using services to handle form state and validations.
-- Building reactive forms to handle user sign up, login and search features.
-- Cache strategy using shareReplay from RxJS.
-- Authentication using tokens and JWT.
+- Angular material componentization to build reusable components in order to create complex and more fluid interfaces.
+- Using services to handle form state and validations. This approach focus on the singleton pattern.
+- Building reactive forms to handle user sign up, profile, login and search features.
+- Cache strategy using shareReplay from RxJS on HTTP requests improving application's performance.
+- Authentication using tokens with JWT.
 - Route guards to functional routes in order to restric access to certain features.
-- Interceptors - how to manipulate HTTP requests in an effient way and error handling.
-- Search, filter and get data fom API in an effient way.
-- Lazy loading to improve performance.
-- New control flow syntax (if, for).
+- Interceptors - how to manipulate HTTP requests in an effient way with error handling.
+- Search, filter and get data fom API in an effient way using the reactive pattern with declarative approach.
+- Lazy loading features to improve performance.
+- Studying the new control flow syntax (if, for).
+
+## 🚀 Features developed
+
+- Login feature ( you can log in on the application. In this feature the JWT token is used to authenticate the user with the server )
+- Sign up feature ( you can create an account to register on the application and then log in. JWT is also used here with reactive forms approach )
+- Profile feature ( you can update your user information. There's a reuse of the sign in form here )
+- Home page ( the main application page where information about tickets flights are shown. There's a reactive form used to search for tickets )
+- Search page ( the results page is where you can see the search tickets results. There is also a side filter also using the reactive forms approach to apply a second filter layer in the results )
+
+## 👌 Live preview
+
+You can find a live preview of the application [here](https://angular-jornada-milhas.vercel.app).
+The project was deployed with Vercel.
 
 ### Prerequisit to run locally
 
